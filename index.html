@@ -1,4 +1,3 @@
-
 <!doctype html><html lang="en">
  <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -1298,35 +1297,49 @@ Gap decoration segments</span><a class="self-link" href="#segments"></a></h3>
 				Let <var>S</var>, the collection of <a data-link-type="dfn" href="#gap-decoration-segment" id="ref-for-gap-decoration-segment①">gap decoration segment</a>s for <var>G</var>, be an empty list.
 			
      <li>
-				Let <var>endpoints</var> be the list of <a data-link-type="dfn" href="#gap-intersection-point" id="ref-for-gap-intersection-point⑧">gap intersection points</a> that fall along the centerline of <var>G</var>,
+				Let <var>endpoints</var> be the list of <u class="link-error" data-lt="segment endpoint" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;segment endpoint&apos;.">segment endpoint</u>s that fall along the centerline of <var>G</var>,
 				ordered from start to end along <var>G</var>’s axis.
 			
      <li>
-				Let <var>a</var> be the first <u class="link-error" data-lt="end segment endpoint" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;end segment endpoint&apos;.">end segment endpoint</u> in <var>endpoints</var>.
+				Let <var>starts</var> be an empty stack.
 			
      <li>
       
-				For each <u class="link-error" data-lt="segment endpoint" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;segment endpoint&apos;.">segment endpoint</u> in <var>endpoints</var>:
+				For each <u class="link-error" data-lt="segment endpoint" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;segment endpoint&apos;.">segment endpoint</u> <var>a</var> in <var>endpoints</var>:
 				
       <ol>
        <li>
-        
-						Attempt to pair <var>a</var> with the first <strong><em>unprocessed</em></strong> <u class="link-error" data-lt="start segment endpoint" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;start segment endpoint&apos;.">start segment endpoint</u> that comes <strong><em>immediately before</em></strong> <var>a</var>. Call this pair <var>p</var>.
-						
-        <ul>
-         <li>
-								If no such <u class="link-error" data-lt="start segment endpoint" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;start segment endpoint&apos;.">start segment endpoint</u> exists, skip to step 2. This will end up leaving a pair of <a data-link-type="dfn" href="https://w3c.github.io/reporting/#endpoint" id="ref-for-endpoint">endpoint</a>s unprocessed.
-							
-         <li>
-								Otherwise, add <var>p</var> to <var>S</var>.
-							
-        </ul>
-       <li>
-						Let <var>a</var> be the <strong>immediate next</strong> <u class="link-error" data-lt="end segment endpoint" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;end segment endpoint&apos;.">end segment endpoint</u> and repeat from step 1 until we have processed the <u class="link-error" data-lt="end segment endpoint" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;end segment endpoint&apos;.">end segment endpoint</u> at the back of <var>endpoints</var>.
+						If <var>a</var> is a <u class="link-error" data-lt="start segment endpoint" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;start segment endpoint&apos;.">start segment endpoint</u>, push <var>a</var> onto <var>starts</var>.
 					
+       <li>
+        
+						If <var>a</var> is an <u class="link-error" data-lt="end segment endpoint" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;end segment endpoint&apos;.">end segment endpoint</u>:
+						
+        <ol>
+         <li>
+          
+								If <var>starts</var> is not empty:
+								
+          <ol>
+           <li>
+										Pop the topmost <u class="link-error" data-lt="start segment endpoint" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;start segment endpoint&apos;.">start segment endpoint</u> <var>b</var> from <var>starts</var>.
+									
+           <li>
+										Create a new <a data-link-type="dfn" href="#gap-decoration-segment" id="ref-for-gap-decoration-segment②">gap decoration segment</a> from <var>b</var> to <var>a</var>, and append it to <var>S</var>.
+									
+          </ol>
+         <li>
+								Otherwise, there is no matching <u class="link-error" data-lt="start segment endpoint" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;start segment endpoint&apos;.">start segment endpoint</u> for <var>a</var>; ignore <var>a</var>.
+							
+        </ol>
       </ol>
     </ul>
    </div>
+   <p>Note that this should result in <strong>no</strong> overlapping <a data-link-type="dfn" href="#gap-decoration-segment" id="ref-for-gap-decoration-segment③">gap decoration segment</a>s in <var>S</var>.</p>
+   <p>In the end, there may remain  unpaired <u class="link-error" data-lt="segment endpoint" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;segment endpoint&apos;.">segment endpoint</u>s in <var>endpoints</var> (or in <var>starts</var>).
+	These result in <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="negative-gap-decoration-segment">negative gap decoration segment</dfn>s. 
+	These are segments that would end up <em>overlapping</em> with other <a data-link-type="dfn" href="#gap-decoration-segment" id="ref-for-gap-decoration-segment④">gap decoration segment</a>s,
+	as a result these are purposefully ignored and no decoration is painted for them. See below for an example.</p>
    <div class="example" id="example-ca903e80">
     <a class="self-link" href="#example-ca903e80"></a>
 		
@@ -1335,7 +1348,7 @@ Gap decoration segments</span><a class="self-link" href="#segments"></a></h3>
 			<img alt src="images/flex-gap-decoration-segments.png">
 			
      <figcaption>
-				Illustration of <a data-link-type="dfn" href="#gap-decoration-segment" id="ref-for-gap-decoration-segment②">gap decoration segment</a>s (blue rectangles) in a flex container.
+				Illustration of <a data-link-type="dfn" href="#gap-decoration-segment" id="ref-for-gap-decoration-segment⑤">gap decoration segment</a>s (blue rectangles) in a flex container.
 				The segments are drawn between pairs of <u class="link-error" data-lt="segment endpoint" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;segment endpoint&apos;.">segment endpoint</u>s,
 				with <u class="link-error" data-lt="start segment endpoint" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;start segment endpoint&apos;.">start segment endpoint</u>s marked with cyan crosses and <u class="link-error" data-lt="end segment endpoint" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;end segment endpoint&apos;.">end segment endpoint</u>s marked with pink crosses.
 			</figcaption>
@@ -1349,7 +1362,7 @@ Gap decoration segments</span><a class="self-link" href="#segments"></a></h3>
 			<img alt src="images/grid-gap-decoration-segments.png">
 			
      <figcaption>
-				Illustration of <a data-link-type="dfn" href="#gap-decoration-segment" id="ref-for-gap-decoration-segment③">gap decoration segment</a>s (blue rectangles) in a grid container.
+				Illustration of <a data-link-type="dfn" href="#gap-decoration-segment" id="ref-for-gap-decoration-segment⑥">gap decoration segment</a>s (blue rectangles) in a grid container.
 				The segments are drawn between pairs of <u class="link-error" data-lt="segment endpoint" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;segment endpoint&apos;.">segment endpoint</u>s,
 				with <u class="link-error" data-lt="start segment endpoint" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;start segment endpoint&apos;.">start segment endpoint</u>s marked with cyan crosses and <u class="link-error" data-lt="end segment endpoint" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;end segment endpoint&apos;.">end segment endpoint</u>s marked with pink crosses.
 			</figcaption>
@@ -1363,14 +1376,12 @@ Gap decoration segments</span><a class="self-link" href="#segments"></a></h3>
 			<img alt src="images/multicol-gap-decoration-segments.png">
 			
      <figcaption>
-				Illustration of <a data-link-type="dfn" href="#gap-decoration-segment" id="ref-for-gap-decoration-segment④">gap decoration segment</a>s (blue rectangles) in a multicol container (with column-wrap: wrap).
+				Illustration of <a data-link-type="dfn" href="#gap-decoration-segment" id="ref-for-gap-decoration-segment⑦">gap decoration segment</a>s (blue rectangles) in a multicol container (with column-wrap: wrap).
 				The segments are drawn between pairs of <u class="link-error" data-lt="segment endpoint" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;segment endpoint&apos;.">segment endpoint</u>s,
 				with <u class="link-error" data-lt="start segment endpoint" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;start segment endpoint&apos;.">start segment endpoint</u>s marked with cyan crosses and <u class="link-error" data-lt="end segment endpoint" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;end segment endpoint&apos;.">end segment endpoint</u>s marked with pink crosses.
 			</figcaption>
     </figure>
    </div>
-   <p>In the end, there may remain unprocessed pairs of <u class="link-error" data-lt="segment endpoint" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;segment endpoint&apos;.">segment endpoint</u>s in <var>endpoints</var>, these are <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="negative-gap-decoration-segment">negative gap decoration segment</dfn>s.
-	These are segments that would end up <em>overlapping</em> with other <a data-link-type="dfn" href="#gap-decoration-segment" id="ref-for-gap-decoration-segment⑤">gap decoration segment</a>s, as a result these are purposefully ignored and no decoration is painted for them.</p>
    <div class="example" id="example-77488928">
     <a class="self-link" href="#example-77488928"></a>
 		
@@ -1380,7 +1391,7 @@ Gap decoration segments</span><a class="self-link" href="#segments"></a></h3>
 			
      <figcaption>
       
-				Illustration of <a data-link-type="dfn" href="#gap-decoration-segment" id="ref-for-gap-decoration-segment⑥">gap decoration segment</a>s (blue rectangles) in a flex container, where we end up with <a data-link-type="dfn" href="#negative-gap-decoration-segment" id="ref-for-negative-gap-decoration-segment">negative gap decoration segment</a>s.
+				Illustration of <a data-link-type="dfn" href="#gap-decoration-segment" id="ref-for-gap-decoration-segment⑧">gap decoration segment</a>s (blue rectangles) in a flex container, where we end up with <a data-link-type="dfn" href="#negative-gap-decoration-segment" id="ref-for-negative-gap-decoration-segment">negative gap decoration segment</a>s.
 				The segments are drawn between pairs of <u class="link-error" data-lt="segment endpoint" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;segment endpoint&apos;.">segment endpoint</u>s,
 				with <u class="link-error" data-lt="start segment endpoint" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;start segment endpoint&apos;.">start segment endpoint</u>s marked with cyan crosses and <u class="link-error" data-lt="end segment endpoint" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;end segment endpoint&apos;.">end segment endpoint</u>s marked with pink crosses.
 
@@ -1424,27 +1435,27 @@ Breaking gap decorations: The <a class="css property" data-link-type="property" 
       <td>discrete
    </table>
    <p>Sets the behavior for breaking decorations within a given <a data-link-type="dfn" href="#gap" id="ref-for-gap⑧">gap</a>.
-	These may cause decorations to extend over multiple <a data-link-type="dfn" href="#gap-decoration-segment" id="ref-for-gap-decoration-segment⑦">gap decoration segment</a>s, or to be broken up into multiple separate decorations (i.e., contained within each <span id="ref-for-gap-decoration-segment⑧">gap decoration segment</span>).
+	These may cause decorations to extend over multiple <a data-link-type="dfn" href="#gap-decoration-segment" id="ref-for-gap-decoration-segment⑨">gap decoration segment</a>s, or to be broken up into multiple separate decorations (i.e., contained within one or more <span id="ref-for-gap-decoration-segment①⓪">gap decoration segment</span>).
 	TODO: FIX: SHOULD LINK TO SAM’S SECTION Precise details for how to apply these values are given in the steps to <u class="link-error" data-lt="determine pairs of decoration endpoints" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;determine pairs of decoration endpoints&apos;.">determine pairs of decoration endpoints</u>.</p>
    <dl>
     <dt><dfn class="css dfn-paneled" data-dfn-for="column-rule-break, row-rule-break" data-dfn-type="value" data-export id="valdef-column-rule-break-none">none</dfn>
 		
     <dd>
-			Within a given <a data-link-type="dfn" href="#gap" id="ref-for-gap⑨">gap</a>, we combine the <a data-link-type="dfn" href="#gap-decoration-segment" id="ref-for-gap-decoration-segment⑨">gap decoration segment</a>s into a single <span id="ref-for-gap-decoration-segment①⓪">gap decoration segment</span>.
+			Within a given <a data-link-type="dfn" href="#gap" id="ref-for-gap⑨">gap</a>, we combine the <a data-link-type="dfn" href="#gap-decoration-segment" id="ref-for-gap-decoration-segment①①">gap decoration segment</a>s into a single <span id="ref-for-gap-decoration-segment①②">gap decoration segment</span>.
 			Therefore, a single continuous decoration is painted from one end of the gap to the other, with no breaks.
 		
     <dt><dfn class="css dfn-paneled" data-dfn-for="column-rule-break, row-rule-break" data-dfn-type="value" data-export id="valdef-column-rule-break-spanning-item">spanning-item</dfn>
 		
     <dd>
-			Within a given <a data-link-type="dfn" href="#gap" id="ref-for-gap①⓪">gap</a>, we combine all <a data-link-type="dfn" href="#gap-decoration-segment" id="ref-for-gap-decoration-segment①①">gap decoration segment</a>s that are <strong>not</strong> intersected by a spanning item.
-			In other words, decorations break at <span id="ref-for-gap-decoration-segment①②">gap decoration segment</span>s that are intersected by an item that spans across gaps.
+			Within a given <a data-link-type="dfn" href="#gap" id="ref-for-gap①⓪">gap</a>, we combine all <a data-link-type="dfn" href="#gap-decoration-segment" id="ref-for-gap-decoration-segment①③">gap decoration segment</a>s that are <strong>not</strong> intersected by a spanning item.
+			In other words, decorations break at <span id="ref-for-gap-decoration-segment①④">gap decoration segment</span>s that are intersected by an item that spans across gaps.
 			Therefore, decorations are only not painted "behind" spanning items.
 		
     <dt><dfn class="css dfn-paneled" data-dfn-for="column-rule-break, row-rule-break" data-dfn-type="value" data-export id="valdef-column-rule-break-intersection">intersection</dfn>
 		
     <dd>
 			Within a given <a data-link-type="dfn" href="#gap" id="ref-for-gap①①">gap</a>, gap decorations start and end at visible "T" and "cross" intersections.
-			In other words, decorations are contained within each <a data-link-type="dfn" href="#gap-decoration-segment" id="ref-for-gap-decoration-segment①③">gap decoration segment</a>.
+			In other words, decorations are contained within each <a data-link-type="dfn" href="#gap-decoration-segment" id="ref-for-gap-decoration-segment①⑤">gap decoration segment</a>.
 		
    </dl>
    <p class="issue" id="issue-b4888084"><a class="self-link" href="#issue-b4888084"></a> Bikeshed these values.</p>
@@ -1537,7 +1548,7 @@ Breaking gap decorations: The <a class="css property" data-link-type="property" 
 			<img alt src="images/example-break-spanning-item-grid.png">
 			
      <figcaption>
-				Grid <a data-link-type="dfn" href="#gap-decoration" id="ref-for-gap-decoration⑦">gap decorations</a> broken at <a data-link-type="dfn" href="#gap-intersection-point" id="ref-for-gap-intersection-point⑨">gap intersection points</a>
+				Grid <a data-link-type="dfn" href="#gap-decoration" id="ref-for-gap-decoration⑦">gap decorations</a> broken at <a data-link-type="dfn" href="#gap-intersection-point" id="ref-for-gap-intersection-point⑧">gap intersection points</a>
 				that are not adjacent to spanning items.
 			</figcaption>
     </figure>
@@ -1560,7 +1571,7 @@ Breaking gap decorations: The <a class="css property" data-link-type="property" 
 			<img alt src="images/example-break-intersection-grid.png">
 			
      <figcaption>
-				Grid <a data-link-type="dfn" href="#gap-decoration" id="ref-for-gap-decoration⑧">gap decorations</a> broken at every <a data-link-type="dfn" href="#gap-intersection-point" id="ref-for-gap-intersection-point①⓪">gap intersection point</a>
+				Grid <a data-link-type="dfn" href="#gap-decoration" id="ref-for-gap-decoration⑧">gap decorations</a> broken at every <a data-link-type="dfn" href="#gap-intersection-point" id="ref-for-gap-intersection-point⑨">gap intersection point</a>
 				that is not flanked by spanning items on opposing sides.
 			</figcaption>
     </figure>
@@ -1613,7 +1624,7 @@ Breaking gap decorations: The <a class="css property" data-link-type="property" 
 			<img alt src="images/example-break-intersection-flex.png">
 			
      <figcaption>
-				Flexbox <a data-link-type="dfn" href="#gap-decoration" id="ref-for-gap-decoration①①">gap decorations</a> broken at every <a data-link-type="dfn" href="#gap-intersection-point" id="ref-for-gap-intersection-point①①">gap intersection point</a>.
+				Flexbox <a data-link-type="dfn" href="#gap-decoration" id="ref-for-gap-decoration①①">gap decorations</a> broken at every <a data-link-type="dfn" href="#gap-intersection-point" id="ref-for-gap-intersection-point①⓪">gap intersection point</a>.
 			</figcaption>
     </figure>
    </div>
@@ -1683,7 +1694,7 @@ Adjusting segment endpoints: The <a class="css property" data-link-type="propert
 	<u class="link-error" data-lt="segment endpoint" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;segment endpoint&apos;.">segment endpoint</u>s which would normally determine where decorations start and end.</p>
    <p>For the interior properties,
 	a value of <span class="css">-50%</span> stretches the <a data-link-type="dfn" href="#gap-decoration" id="ref-for-gap-decoration①③">gap decoration</a> up to the center of the intersection that is formed by the gaps,
-	and a value of <span class="css">0</span> places the <span id="ref-for-gap-decoration①④">gap decoration</span> start and end points at the <u class="link-error" data-lt="start segment endpoint" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;start segment endpoint&apos;.">start segment endpoint</u> and <u class="link-error" data-lt="end segment endpoint" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;end segment endpoint&apos;.">end segment endpoint</u> of the <a data-link-type="dfn" href="#gap-decoration-segment" id="ref-for-gap-decoration-segment①④">gap decoration segment</a>.</p>
+	and a value of <span class="css">0</span> places the <span id="ref-for-gap-decoration①④">gap decoration</span> start and end points at the <u class="link-error" data-lt="start segment endpoint" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;start segment endpoint&apos;.">start segment endpoint</u> and <u class="link-error" data-lt="end segment endpoint" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;end segment endpoint&apos;.">end segment endpoint</u> of the <a data-link-type="dfn" href="#gap-decoration-segment" id="ref-for-gap-decoration-segment①⑥">gap decoration segment</a>.</p>
    <dl>
     <dt><dfn class="css dfn-paneled" data-dfn-for="rule-inset" data-dfn-type="value" data-export id="valdef-rule-inset-auto">auto</dfn>
 		
@@ -2131,7 +2142,7 @@ Adjusting segment endpoints: The <a class="css property" data-link-type="propert
 			</figcaption>
     </figure>
    </div>
-   <p>When considering the <a data-link-type="dfn" href="#gap-intersection-point" id="ref-for-gap-intersection-point①②">gap intersection points</a> within a given gap,
+   <p>When considering the <a data-link-type="dfn" href="#gap-intersection-point" id="ref-for-gap-intersection-point①①">gap intersection points</a> within a given gap,
 	each point is assigned a <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="crossing-gap-width">crossing gap width</dfn>, defined as follows:</p>
    <dl>
     <dt>
@@ -3285,11 +3296,6 @@ Non-experimental implementations</span><a class="self-link" href="#w3c-testing">
      <li><span class="dfn-paneled" id="8a82fda1">||</span>
     </ul>
    <li>
-    <a data-link-type="biblio">[REPORTING-1]</a> defines the following terms:
-    <ul>
-     <li><span class="dfn-paneled" id="9239678f">endpoint</span>
-    </ul>
-   <li>
     <a data-link-type="biblio">[WEB-ANIMATIONS-1]</a> defines the following terms:
     <ul>
      <li><span class="dfn-paneled" id="e3ec4d32">discrete</span>
@@ -3323,8 +3329,6 @@ Non-experimental implementations</span><a class="self-link" href="#w3c-testing">
    <dd>Tab Atkins Jr.; Elika Etemad. <a href="https://drafts.csswg.org/css-values-4/"><cite>CSS Values and Units Module Level 4</cite></a>. URL: <a href="https://drafts.csswg.org/css-values-4/">https://drafts.csswg.org/css-values-4/</a>
    <dt id="biblio-css2">[CSS2]
    <dd>Bert Bos; et al. <a href="https://drafts.csswg.org/css2/"><cite>Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification</cite></a>. URL: <a href="https://drafts.csswg.org/css2/">https://drafts.csswg.org/css2/</a>
-   <dt id="biblio-reporting-1">[REPORTING-1]
-   <dd>Douglas Creager; Ian Clelland; Mike West. <a href="https://w3c.github.io/reporting/"><cite>Reporting API</cite></a>. URL: <a href="https://w3c.github.io/reporting/">https://w3c.github.io/reporting/</a>
    <dt id="biblio-rfc2119">[RFC2119]
    <dd>S. Bradner. <a href="https://datatracker.ietf.org/doc/html/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. March 1997. Best Current Practice. URL: <a href="https://datatracker.ietf.org/doc/html/rfc2119">https://datatracker.ietf.org/doc/html/rfc2119</a>
    <dt id="biblio-web-animations-1">[WEB-ANIMATIONS-1]
@@ -3975,7 +3979,6 @@ let dfnPanelData = {
 "7594868a": {"dfnID":"7594868a","dfnText":"hidden","external":true,"refSections":[{"refs":[{"id":"ref-for-valdef-line-style-hidden"}],"title":"7.1. \nChanges since the 17 April 2025 Working Draft"}],"url":"https://drafts.csswg.org/css-backgrounds-3/#valdef-line-style-hidden"},
 "7e6af1ac": {"dfnID":"7e6af1ac","dfnText":"gutter","external":true,"refSections":[{"refs":[{"id":"ref-for-gutter"},{"id":"ref-for-gutter\u2460"},{"id":"ref-for-gutter\u2461"},{"id":"ref-for-gutter\u2462"},{"id":"ref-for-gutter\u2463"}],"title":"2.1. \n   Gaps"},{"refs":[{"id":"ref-for-gutter\u2464"}],"title":"2.2. \nLayout and painting"},{"refs":[{"id":"ref-for-gutter\u2465"}],"title":"7.1. \nChanges since the 17 April 2025 Working Draft"}],"url":"https://drafts.csswg.org/css-align-3/#gutter"},
 "8a82fda1": {"dfnID":"8a82fda1","dfnText":"||","external":true,"refSections":[{"refs":[{"id":"ref-for-comb-any"},{"id":"ref-for-comb-any\u2460"}],"title":"3.5. \nGap decoration shorthands: The column-rule and row-rule properties"}],"url":"https://drafts.csswg.org/css-values-4/#comb-any"},
-"9239678f": {"dfnID":"9239678f","dfnText":"endpoint","external":true,"refSections":[{"refs":[{"id":"ref-for-endpoint"}],"title":"2.4. \nGap decoration segments"}],"url":"https://w3c.github.io/reporting/#endpoint"},
 "957ec3c1": {"dfnID":"957ec3c1","dfnText":"<line-style>","external":true,"refSections":[{"refs":[{"id":"ref-for-typedef-line-style"},{"id":"ref-for-typedef-line-style\u2460"},{"id":"ref-for-typedef-line-style\u2461"},{"id":"ref-for-typedef-line-style\u2462"}],"title":"3.2. \nGap decoration style: The column-rule-style and row-rule-style properties"},{"refs":[{"id":"ref-for-typedef-line-style\u2463"}],"title":"3.5. \nGap decoration shorthands: The column-rule and row-rule properties"}],"url":"https://drafts.csswg.org/css-backgrounds-3/#typedef-line-style"},
 "9ddea951": {"dfnID":"9ddea951","dfnText":"px","external":true,"refSections":[{"refs":[{"id":"ref-for-px"}],"title":"2.6. \nAdjusting segment endpoints: The rule-inset properties"}],"url":"https://drafts.csswg.org/css-values-4/#px"},
 "9f9120ff": {"dfnID":"9f9120ff","dfnText":",","external":true,"refSections":[{"refs":[{"id":"ref-for-comb-comma"},{"id":"ref-for-comb-comma\u2460"}],"title":"3.1. \nGap decoration color: The column-rule-color and row-rule-color properties"},{"refs":[{"id":"ref-for-comb-comma\u2461"},{"id":"ref-for-comb-comma\u2462"}],"title":"3.2. \nGap decoration style: The column-rule-style and row-rule-style properties"},{"refs":[{"id":"ref-for-comb-comma\u2463"},{"id":"ref-for-comb-comma\u2464"}],"title":"3.3. \nGap decoration width: The column-rule-width and row-rule-width properties"},{"refs":[{"id":"ref-for-comb-comma\u2465"}],"title":"3.4. \nLists of values and the repeat() notation"},{"refs":[{"id":"ref-for-comb-comma\u2466"},{"id":"ref-for-comb-comma\u2467"},{"id":"ref-for-comb-comma\u2468"},{"id":"ref-for-comb-comma\u2460\u24ea"}],"title":"3.5. \nGap decoration shorthands: The column-rule and row-rule properties"}],"url":"https://drafts.csswg.org/css-values-4/#comb-comma"},
@@ -3998,8 +4001,8 @@ let dfnPanelData = {
 "funcdef-repeat-line-color-repeat": {"dfnID":"funcdef-repeat-line-color-repeat","dfnText":"repeat()","external":false,"refSections":[{"refs":[{"id":"ref-for-funcdef-repeat-line-color-repeat"}],"title":"3.4.1. Interpolation behavior"}],"url":"#funcdef-repeat-line-color-repeat"},
 "gap": {"dfnID":"gap","dfnText":"gap","external":false,"refSections":[{"refs":[{"id":"ref-for-gap"},{"id":"ref-for-gap\u2460"},{"id":"ref-for-gap\u2461"},{"id":"ref-for-gap\u2462"},{"id":"ref-for-gap\u2463"},{"id":"ref-for-gap\u2464"}],"title":"2.1. Gaps"},{"refs":[{"id":"ref-for-gap\u2465"},{"id":"ref-for-gap\u2466"}],"title":"2.4. Gap decoration segments"},{"refs":[{"id":"ref-for-gap\u2467"},{"id":"ref-for-gap\u2468"},{"id":"ref-for-gap\u2460\u24ea"},{"id":"ref-for-gap\u2460\u2460"}],"title":"2.5. Breaking gap decorations: The column-rule-break, row-rule-break, and rule-break properties"}],"url":"#gap"},
 "gap-decoration": {"dfnID":"gap-decoration","dfnText":"gap decoration","external":false,"refSections":[{"refs":[{"id":"ref-for-gap-decoration"},{"id":"ref-for-gap-decoration\u2460"},{"id":"ref-for-gap-decoration\u2461"},{"id":"ref-for-gap-decoration\u2462"},{"id":"ref-for-gap-decoration\u2463"}],"title":"2.2. Layout and painting"},{"refs":[{"id":"ref-for-gap-decoration\u2464"},{"id":"ref-for-gap-decoration\u2465"},{"id":"ref-for-gap-decoration\u2466"},{"id":"ref-for-gap-decoration\u2467"},{"id":"ref-for-gap-decoration\u2468"},{"id":"ref-for-gap-decoration\u2460\u24ea"},{"id":"ref-for-gap-decoration\u2460\u2460"}],"title":"2.5. Breaking gap decorations: The column-rule-break, row-rule-break, and rule-break properties"},{"refs":[{"id":"ref-for-gap-decoration\u2460\u2461"},{"id":"ref-for-gap-decoration\u2460\u2462"},{"id":"ref-for-gap-decoration\u2460\u2463"},{"id":"ref-for-gap-decoration\u2460\u2464"},{"id":"ref-for-gap-decoration\u2460\u2465"},{"id":"ref-for-gap-decoration\u2460\u2466"},{"id":"ref-for-gap-decoration\u2460\u2467"},{"id":"ref-for-gap-decoration\u2460\u2468"},{"id":"ref-for-gap-decoration\u2461\u24ea"},{"id":"ref-for-gap-decoration\u2461\u2460"},{"id":"ref-for-gap-decoration\u2461\u2461"},{"id":"ref-for-gap-decoration\u2461\u2462"},{"id":"ref-for-gap-decoration\u2461\u2463"}],"title":"2.6. Adjusting segment endpoints: The rule-inset properties"},{"refs":[{"id":"ref-for-gap-decoration\u2461\u2464"}],"title":"2.7. Gap decoration overlap: The rule-overlap property"},{"refs":[{"id":"ref-for-gap-decoration\u2461\u2465"}],"title":"3.1. Gap decoration color: The column-rule-color and row-rule-color properties"},{"refs":[{"id":"ref-for-gap-decoration\u2461\u2466"}],"title":"3.2. Gap decoration style: The column-rule-style and row-rule-style properties"},{"refs":[{"id":"ref-for-gap-decoration\u2461\u2467"}],"title":"3.3. Gap decoration width: The column-rule-width and row-rule-width properties"},{"refs":[{"id":"ref-for-gap-decoration\u2461\u2468"},{"id":"ref-for-gap-decoration\u2462\u24ea"}],"title":"3.4. Lists of values and the repeat() notation"}],"url":"#gap-decoration"},
-"gap-decoration-segment": {"dfnID":"gap-decoration-segment","dfnText":"gap decoration segment","external":false,"refSections":[{"refs":[{"id":"ref-for-gap-decoration-segment"},{"id":"ref-for-gap-decoration-segment\u2460"},{"id":"ref-for-gap-decoration-segment\u2461"},{"id":"ref-for-gap-decoration-segment\u2462"},{"id":"ref-for-gap-decoration-segment\u2463"},{"id":"ref-for-gap-decoration-segment\u2464"},{"id":"ref-for-gap-decoration-segment\u2465"}],"title":"2.4. Gap decoration segments"},{"refs":[{"id":"ref-for-gap-decoration-segment\u2466"},{"id":"ref-for-gap-decoration-segment\u2467"},{"id":"ref-for-gap-decoration-segment\u2468"},{"id":"ref-for-gap-decoration-segment\u2460\u24ea"},{"id":"ref-for-gap-decoration-segment\u2460\u2460"},{"id":"ref-for-gap-decoration-segment\u2460\u2461"},{"id":"ref-for-gap-decoration-segment\u2460\u2462"}],"title":"2.5. Breaking gap decorations: The column-rule-break, row-rule-break, and rule-break properties"},{"refs":[{"id":"ref-for-gap-decoration-segment\u2460\u2463"}],"title":"2.6. Adjusting segment endpoints: The rule-inset properties"}],"url":"#gap-decoration-segment"},
-"gap-intersection-point": {"dfnID":"gap-intersection-point","dfnText":"gap intersection point","external":false,"refSections":[{"refs":[{"id":"ref-for-gap-intersection-point"},{"id":"ref-for-gap-intersection-point\u2460"},{"id":"ref-for-gap-intersection-point\u2461"},{"id":"ref-for-gap-intersection-point\u2462"},{"id":"ref-for-gap-intersection-point\u2463"},{"id":"ref-for-gap-intersection-point\u2464"},{"id":"ref-for-gap-intersection-point\u2465"},{"id":"ref-for-gap-intersection-point\u2466"}],"title":"2.2. Layout and painting"},{"refs":[{"id":"ref-for-gap-intersection-point\u2467"}],"title":"2.4. Gap decoration segments"},{"refs":[{"id":"ref-for-gap-intersection-point\u2468"},{"id":"ref-for-gap-intersection-point\u2460\u24ea"},{"id":"ref-for-gap-intersection-point\u2460\u2460"}],"title":"2.5. Breaking gap decorations: The column-rule-break, row-rule-break, and rule-break properties"},{"refs":[{"id":"ref-for-gap-intersection-point\u2460\u2461"}],"title":"2.6. Adjusting segment endpoints: The rule-inset properties"}],"url":"#gap-intersection-point"},
+"gap-decoration-segment": {"dfnID":"gap-decoration-segment","dfnText":"gap decoration segment","external":false,"refSections":[{"refs":[{"id":"ref-for-gap-decoration-segment"},{"id":"ref-for-gap-decoration-segment\u2460"},{"id":"ref-for-gap-decoration-segment\u2461"},{"id":"ref-for-gap-decoration-segment\u2462"},{"id":"ref-for-gap-decoration-segment\u2463"},{"id":"ref-for-gap-decoration-segment\u2464"},{"id":"ref-for-gap-decoration-segment\u2465"},{"id":"ref-for-gap-decoration-segment\u2466"},{"id":"ref-for-gap-decoration-segment\u2467"}],"title":"2.4. Gap decoration segments"},{"refs":[{"id":"ref-for-gap-decoration-segment\u2468"},{"id":"ref-for-gap-decoration-segment\u2460\u24ea"},{"id":"ref-for-gap-decoration-segment\u2460\u2460"},{"id":"ref-for-gap-decoration-segment\u2460\u2461"},{"id":"ref-for-gap-decoration-segment\u2460\u2462"},{"id":"ref-for-gap-decoration-segment\u2460\u2463"},{"id":"ref-for-gap-decoration-segment\u2460\u2464"}],"title":"2.5. Breaking gap decorations: The column-rule-break, row-rule-break, and rule-break properties"},{"refs":[{"id":"ref-for-gap-decoration-segment\u2460\u2465"}],"title":"2.6. Adjusting segment endpoints: The rule-inset properties"}],"url":"#gap-decoration-segment"},
+"gap-intersection-point": {"dfnID":"gap-intersection-point","dfnText":"gap intersection point","external":false,"refSections":[{"refs":[{"id":"ref-for-gap-intersection-point"},{"id":"ref-for-gap-intersection-point\u2460"},{"id":"ref-for-gap-intersection-point\u2461"},{"id":"ref-for-gap-intersection-point\u2462"},{"id":"ref-for-gap-intersection-point\u2463"},{"id":"ref-for-gap-intersection-point\u2464"},{"id":"ref-for-gap-intersection-point\u2465"},{"id":"ref-for-gap-intersection-point\u2466"}],"title":"2.2. Layout and painting"},{"refs":[{"id":"ref-for-gap-intersection-point\u2467"},{"id":"ref-for-gap-intersection-point\u2468"},{"id":"ref-for-gap-intersection-point\u2460\u24ea"}],"title":"2.5. Breaking gap decorations: The column-rule-break, row-rule-break, and rule-break properties"},{"refs":[{"id":"ref-for-gap-intersection-point\u2460\u2460"}],"title":"2.6. Adjusting segment endpoints: The rule-inset properties"}],"url":"#gap-intersection-point"},
 "integer-repeater": {"dfnID":"integer-repeater","dfnText":"integer repeater","external":false,"refSections":[{"refs":[{"id":"ref-for-integer-repeater"},{"id":"ref-for-integer-repeater\u2460"}],"title":"3.4. Lists of values and the repeat() notation"},{"refs":[{"id":"ref-for-integer-repeater\u2461"}],"title":"3.4.1. Interpolation behavior"}],"url":"#integer-repeater"},
 "interior-segment-endpoint": {"dfnID":"interior-segment-endpoint","dfnText":"interior segment endpoint","external":false,"refSections":[{"refs":[{"id":"ref-for-interior-segment-endpoint"},{"id":"ref-for-interior-segment-endpoint\u2460"},{"id":"ref-for-interior-segment-endpoint\u2461"}],"title":"2.6. Adjusting segment endpoints: The rule-inset properties"}],"url":"#interior-segment-endpoint"},
 "negative-gap-decoration-segment": {"dfnID":"negative-gap-decoration-segment","dfnText":"negative gap decoration segment","external":false,"refSections":[{"refs":[{"id":"ref-for-negative-gap-decoration-segment"},{"id":"ref-for-negative-gap-decoration-segment\u2460"}],"title":"2.4. Gap decoration segments"}],"url":"#negative-gap-decoration-segment"},
@@ -4596,7 +4599,6 @@ let refsData = {
 "https://drafts.csswg.org/css-values-4/#typedef-length-percentage": {"displayText":"<length-percentage>","export":true,"for_":[],"level":"4","normative":true,"shortname":"css-values","spec":"css-values-4","status":"current","text":"<length-percentage>","type":"type","url":"https://drafts.csswg.org/css-values-4/#typedef-length-percentage"},
 "https://drafts.csswg.org/web-animations-1/#discrete": {"displayText":"discrete","export":true,"for_":[],"level":"1","normative":true,"shortname":"web-animations","spec":"web-animations-1","status":"current","text":"discrete","type":"dfn","url":"https://drafts.csswg.org/web-animations-1/#discrete"},
 "https://drafts.csswg.org/web-animations-1/#repeatable-list": {"displayText":"repeatable list","export":true,"for_":[],"level":"1","normative":true,"shortname":"web-animations","spec":"web-animations-1","status":"current","text":"repeatable list","type":"dfn","url":"https://drafts.csswg.org/web-animations-1/#repeatable-list"},
-"https://w3c.github.io/reporting/#endpoint": {"displayText":"endpoint","export":true,"for_":[],"level":"1","normative":true,"shortname":"reporting","spec":"reporting-1","status":"current","text":"endpoint","type":"dfn","url":"https://w3c.github.io/reporting/#endpoint"},
 "https://www.w3.org/TR/css-gaps-1/#propdef-rule-paint-order": {"displayText":"rule-paint-order","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"snapshot","text":"rule-paint-order","type":"property","url":"https://www.w3.org/TR/css-gaps-1/#propdef-rule-paint-order"},
 };
 
