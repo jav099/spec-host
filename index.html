@@ -962,8 +962,8 @@ Segment Endpoints</span></a>
 	Gap decoration segments</span></a>
        </ol>
       <li>
-       <a href="#break"><span class="secno">3.2</span> <span class="content">
-Breaking gap decorations: The <span class="property">column-rule-break</span>, <span class="property">row-rule-break</span>, and <span class="property">rule-break</span> properties</span></a>
+       <a href="#join"><span class="secno">3.2</span> <span class="content">
+Joining gap decoration segments: The <span class="property">column-rule-join</span>, <span class="property">row-rule-join</span>, and <span class="property">rule-join</span> properties</span></a>
        <ol class="toc">
         <li><a href="#determining-candidate-gap-segments"><span class="secno">3.2.1</span> <span class="content">
 Determining Candidate Gap Segments From Break Rules</span></a>
@@ -1046,7 +1046,6 @@ Non-experimental implementations</span></a>
      <a href="#references"><span class="secno"></span> <span class="content">References</span></a>
      <ol class="toc">
       <li><a href="#normative"><span class="secno"></span> <span class="content">Normative References</span></a>
-      <li><a href="#informative"><span class="secno"></span> <span class="content">Informative References</span></a>
      </ol>
     <li><a href="#property-index"><span class="secno"></span> <span class="content">Property Index</span></a>
    </ol>
@@ -1074,17 +1073,17 @@ Value Definitions</span><a class="self-link" href="#values"></a></h3>
    <h2 class="heading settled" data-level="2" id="gaps"><span class="secno">2. </span><span class="content">
    Gaps</span><a class="self-link" href="#gaps"></a></h2>
    <p>Various layouts in CSS such as
-	<a data-link-type="dfn" href="https://drafts.csswg.org/css-multicol-2/#multi-column-container" id="ref-for-multi-column-container①">multicol containers</a>, <a data-link-type="dfn" href="https://drafts.csswg.org/css-flexbox-1/#flex-container" id="ref-for-flex-container">flex containers</a>, <a data-link-type="dfn" href="https://drafts.csswg.org/css-grid-2/#grid-container" id="ref-for-grid-container">grid containers</a>, and <u class="link-error" data-lt="masonry containers" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;masonry containers&apos;.">masonry containers</u>
-	position child boxes adjacent to each other with <a data-link-type="dfn" href="#gap" id="ref-for-gap">gaps</a>, between them.</p>
+	<a data-link-type="dfn" href="https://drafts.csswg.org/css-multicol-2/#multi-column-container" id="ref-for-multi-column-container①">multicol containers</a>, <a data-link-type="dfn" href="https://drafts.csswg.org/css-flexbox-1/#flex-container" id="ref-for-flex-container">flex containers</a>, <a data-link-type="dfn" href="https://drafts.csswg.org/css-grid-2/#grid-container" id="ref-for-grid-container">grid containers</a>, and <a data-link-type="dfn" href="https://drafts.csswg.org/css-grid-3/#grid-lanes-container" id="ref-for-grid-lanes-container">grid lanes containers</a>
+	position child boxes adjacent to each other with <a data-link-type="dfn" href="#gap" id="ref-for-gap">gaps</a>, also known as <a data-link-type="dfn" href="https://drafts.csswg.org/css-align-3/#gutter" id="ref-for-gutter">gutters</a>, between them.</p>
    <p>For the purposes of this specification, <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="gap">gap</dfn>, <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="column-gap">column gap</dfn>, and <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="row-gap">row gap</dfn> are defined as follows depending on the type of container:</p>
    <dl>
     <dt id="gap-multicol"><a class="self-link" href="#gap-multicol"></a><a data-link-type="dfn" href="https://drafts.csswg.org/css-multicol-2/#multi-column-container" id="ref-for-multi-column-container②">multi-column containers</a>
 		
     <dd>
-			In the column direction, <a data-link-type="dfn" href="#gap" id="ref-for-gap①">gap</a> (<a data-link-type="dfn" href="#column-gap" id="ref-for-column-gap">column gap</a>) refers to the <a data-link-type="dfn" href="https://drafts.csswg.org/css-align-3/#gutter" id="ref-for-gutter">gutter</a> between adjacent <a data-link-type="dfn" href="https://drafts.csswg.org/css-multicol-2/#column-box" id="ref-for-column-box">column boxes</a> within each <a data-link-type="dfn" href="https://drafts.csswg.org/css-multicol-2/#multi-column-line" id="ref-for-multi-column-line">multicol line</a>,
+			In the column direction, <a data-link-type="dfn" href="#gap" id="ref-for-gap①">gap</a> (<a data-link-type="dfn" href="#column-gap" id="ref-for-column-gap">column gap</a>) refers to the <a data-link-type="dfn" href="https://drafts.csswg.org/css-align-3/#gutter" id="ref-for-gutter①">gutter</a> between adjacent <a data-link-type="dfn" href="https://drafts.csswg.org/css-multicol-2/#column-box" id="ref-for-column-box">column boxes</a> within each <a data-link-type="dfn" href="https://drafts.csswg.org/css-multicol-2/#multi-column-line" id="ref-for-multi-column-line">multicol line</a>,
 			see <a data-link-type="biblio" href="#biblio-css-multicol-1" title="CSS Multi-column Layout Module Level 1">[CSS-MULTICOL-1]</a>.
-			In the row direction, <span id="ref-for-gap②">gap</span> (<a data-link-type="dfn" href="#row-gap" id="ref-for-row-gap">row gap</a>) refers to the <span id="ref-for-gutter①">gutter</span> between the rows of <span id="ref-for-column-box①">column boxes</span> established by <a class="css property" data-link-type="property" href="https://drafts.csswg.org/css-multicol-2/#propdef-column-height" id="ref-for-propdef-column-height">column-height</a>,
-			see <a data-link-type="biblio" href="#biblio-css-multicol-2" title="CSS Multi-column Layout Module Level 2">[CSS-MULTICOL-2]</a>. It is important to note that <u class="link-error" data-lt="column-gap" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;column-gap&apos;.">column-gap</u>s break when encountering a spanner element, see below for an example.
+			In the row direction, <span id="ref-for-gap②">gap</span> (<a data-link-type="dfn" href="#row-gap" id="ref-for-row-gap">row gap</a>) refers to the <span id="ref-for-gutter②">gutter</span> between the rows of <span id="ref-for-column-box①">column boxes</span> established by <a class="css property" data-link-type="property" href="https://drafts.csswg.org/css-multicol-2/#propdef-column-height" id="ref-for-propdef-column-height">column-height</a>,
+			see <a data-link-type="biblio" href="#biblio-css-multicol-2" title="CSS Multi-column Layout Module Level 2">[CSS-MULTICOL-2]</a>.
 
 		
     <dt id="gap-flex"><a class="self-link" href="#gap-flex"></a><a data-link-type="dfn" href="https://drafts.csswg.org/css-flexbox-1/#flex-container" id="ref-for-flex-container①">flex containers</a>
@@ -1093,17 +1092,17 @@ Value Definitions</span><a class="self-link" href="#values"></a></h3>
      
 			In the <a data-link-type="dfn" href="https://drafts.csswg.org/css-flexbox-1/#main-axis" id="ref-for-main-axis">main axis</a>
 			(e.g. <a class="css property" data-link-type="property" href="https://drafts.csswg.org/css-align-3/#propdef-column-gap" id="ref-for-propdef-column-gap">column-gap</a> in a <span class="css">row</span> <a data-link-type="dfn" href="https://drafts.csswg.org/css-flexbox-1/#flex-container" id="ref-for-flex-container②">flex container</a>),
-			<a data-link-type="dfn" href="#gap" id="ref-for-gap③">gap</a> (<a data-link-type="dfn" href="#column-gap" id="ref-for-column-gap①">column gap</a>) refers to the <a data-link-type="dfn" href="https://drafts.csswg.org/css-align-3/#gutter" id="ref-for-gutter②">gutter</a> between items within a single <a data-link-type="dfn" href="https://drafts.csswg.org/css-flexbox-1/#flex-line" id="ref-for-flex-line">flex line</a>.
+			<a data-link-type="dfn" href="#gap" id="ref-for-gap③">gap</a> (<a data-link-type="dfn" href="#column-gap" id="ref-for-column-gap①">column gap</a>) refers to the <a data-link-type="dfn" href="https://drafts.csswg.org/css-align-3/#gutter" id="ref-for-gutter③">gutter</a> between items within a single <a data-link-type="dfn" href="https://drafts.csswg.org/css-flexbox-1/#flex-line" id="ref-for-flex-line">flex line</a>.
 
 
      <p>In the <a data-link-type="dfn" href="https://drafts.csswg.org/css-flexbox-1/#cross-axis" id="ref-for-cross-axis">cross axis</a>
 			(e.g. <a class="css property" data-link-type="property" href="https://drafts.csswg.org/css-align-3/#propdef-row-gap" id="ref-for-propdef-row-gap">row-gap</a> in a <span class="css">row</span> <a data-link-type="dfn" href="https://drafts.csswg.org/css-flexbox-1/#flex-container" id="ref-for-flex-container③">flex container</a>),
-			<a data-link-type="dfn" href="#gap" id="ref-for-gap④">gap</a> (<a data-link-type="dfn" href="#row-gap" id="ref-for-row-gap①">row gap</a>) refers to the <a data-link-type="dfn" href="https://drafts.csswg.org/css-align-3/#gutter" id="ref-for-gutter③">gutter</a> between adjacent <a data-link-type="dfn" href="https://drafts.csswg.org/css-flexbox-1/#flex-line" id="ref-for-flex-line①">flex lines</a>.</p>
+			<a data-link-type="dfn" href="#gap" id="ref-for-gap④">gap</a> (<a data-link-type="dfn" href="#row-gap" id="ref-for-row-gap①">row gap</a>) refers to the <a data-link-type="dfn" href="https://drafts.csswg.org/css-align-3/#gutter" id="ref-for-gutter④">gutter</a> between adjacent <a data-link-type="dfn" href="https://drafts.csswg.org/css-flexbox-1/#flex-line" id="ref-for-flex-line①">flex lines</a>.</p>
     <dt id="gap-grid"><a class="self-link" href="#gap-grid"></a><a data-link-type="dfn" href="https://drafts.csswg.org/css-grid-2/#grid-container" id="ref-for-grid-container①">grid containers</a>
 		
     <dd>
 			<a data-link-type="dfn" href="#row-gap" id="ref-for-row-gap②">row gap</a>s and <a data-link-type="dfn" href="#column-gap" id="ref-for-column-gap②">column gap</a>s
-			refer to the <a data-link-type="dfn" href="https://drafts.csswg.org/css-align-3/#gutter" id="ref-for-gutter④">gutters</a> between <a data-link-type="dfn" href="https://drafts.csswg.org/css-grid-2/#grid-row" id="ref-for-grid-row">grid rows</a> and <a data-link-type="dfn" href="https://drafts.csswg.org/css-grid-2/#grid-column" id="ref-for-grid-column">grid columns</a>,
+			refer to the <a data-link-type="dfn" href="https://drafts.csswg.org/css-align-3/#gutter" id="ref-for-gutter⑤">gutters</a> between <a data-link-type="dfn" href="https://drafts.csswg.org/css-grid-2/#grid-row" id="ref-for-grid-row">grid rows</a> and <a data-link-type="dfn" href="https://drafts.csswg.org/css-grid-2/#grid-column" id="ref-for-grid-column">grid columns</a>,
 			respectively.
 			See <a href="https://drafts.csswg.org/css-grid-1/#gutters"><cite>CSS Grid Layout 1</cite> § 10.1 Gutters: the row-gap, column-gap, and gap properties</a> for precise details.
 	
@@ -1128,6 +1127,7 @@ Value Definitions</span><a class="self-link" href="#values"></a></h3>
      <figcaption>Gaps in a flex container (in orange and blue).</figcaption>
     </figure>
    </div>
+   <p class="note" role="note"><span class="marker">Note:</span> It is important to note that <a data-link-type="dfn" href="#column-gap" id="ref-for-column-gap③">column gap</a>s in Multicol containers break when encountering a spanner element or a row gap.</p>
    <div class="example" id="example-7f5aac33">
     <a class="self-link" href="#example-7f5aac33"></a>
 		
@@ -1150,10 +1150,7 @@ Value Definitions</span><a class="self-link" href="#values"></a></h3>
    </div>
    <h2 class="heading settled" data-level="3" id="gap-decorations"><span class="secno">3. </span><span class="content">
 Gap decorations</span><a class="self-link" href="#gap-decorations"></a></h2>
-   <p>Various layouts in CSS such as
-	<a data-link-type="dfn" href="https://drafts.csswg.org/css-multicol-2/#multi-column-container" id="ref-for-multi-column-container③">multicol containers</a>, <a data-link-type="dfn" href="https://drafts.csswg.org/css-flexbox-1/#flex-container" id="ref-for-flex-container④">flex containers</a>, <a data-link-type="dfn" href="https://drafts.csswg.org/css-grid-2/#grid-container" id="ref-for-grid-container②">grid containers</a>, and <a data-link-type="dfn" href="https://drafts.csswg.org/css-grid-3/#grid-lanes-container" id="ref-for-grid-lanes-container">grid lanes containers</a>
-	position child boxes adjacent to each other with gaps, also known as <a data-link-type="dfn" href="https://drafts.csswg.org/css-align-3/#gutter" id="ref-for-gutter⑤">gutters</a>, between them.
-	Each such gap may contain a <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="gap-decoration">gap decoration</dfn>,
+   <p><a data-link-type="dfn" href="#gap" id="ref-for-gap⑤">Gaps</a> may contain a <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="gap-decoration">gap decoration</dfn>,
 	which is a visible separator (such as a line) painted between adjacent boxes.</p>
    <div class="example" id="example-bdc1e8fd">
     <a class="self-link" href="#example-bdc1e8fd"></a>
@@ -1352,12 +1349,12 @@ Segment Endpoints</span><a class="self-link" href="#segment-endpoints"></a></h4>
    <h4 class="heading settled" data-level="3.1.2" id="segments"><span class="secno">3.1.2. </span><span class="content">
 	Gap decoration segments</span><a class="self-link" href="#segments"></a></h4>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="gap-decoration-segment">gap decoration segment</dfn> is formed by pairing a <a data-link-type="dfn" href="#start-segment-endpoint" id="ref-for-start-segment-endpoint③">start segment endpoint</a> with an <a data-link-type="dfn" href="#end-segment-endpoint" id="ref-for-end-segment-endpoint③">end segment endpoint</a>.
-	Each <a data-link-type="dfn" href="#gap" id="ref-for-gap⑤">gap</a> is a collection of <i>n</i> <a data-link-type="dfn" href="#gap-decoration-segment" id="ref-for-gap-decoration-segment①">gap decoration segment</a>s, where <i>n > 0</i>.</p>
+	Each <a data-link-type="dfn" href="#gap" id="ref-for-gap⑥">gap</a> is a collection of <i>n</i> <a data-link-type="dfn" href="#gap-decoration-segment" id="ref-for-gap-decoration-segment①">gap decoration segment</a>s, where <i>n > 0</i>.</p>
    <div class="algorithm" data-algorithm="determine the gap decoration segments">
     
-		To <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="determine-the-gap-decoration-segments">determine the gap decoration segments</dfn> for a given <a data-link-type="dfn" href="#gap" id="ref-for-gap⑥">gap</a> <var>G</var>:
+		To <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="determine-the-gap-decoration-segments">determine the gap decoration segments</dfn> for a given <a data-link-type="dfn" href="#gap" id="ref-for-gap⑦">gap</a> <var>G</var>:
 		
-    <ul>
+    <ol>
      <li>
 				Let <var>S</var>, the collection of <a data-link-type="dfn" href="#gap-decoration-segment" id="ref-for-gap-decoration-segment②">gap decoration segment</a>s for <var>G</var>, be an empty list.
 			
@@ -1398,9 +1395,9 @@ Segment Endpoints</span><a class="self-link" href="#segment-endpoints"></a></h4>
 							
         </ol>
       </ol>
-    </ul>
+    </ol>
    </div>
-   <p class="note" role="note">	Note that this should result in <strong>no</strong> overlapping <a data-link-type="dfn" href="#gap-decoration-segment" id="ref-for-gap-decoration-segment④">gap decoration segment</a>s in <var>S</var>.</p>
+   <p class="note" role="note"><span class="marker">Note:</span> This should result in <strong>no</strong> overlapping <a data-link-type="dfn" href="#gap-decoration-segment" id="ref-for-gap-decoration-segment④">gap decoration segment</a>s in <var>S</var>.</p>
    <div class="example" id="example-ca903e80">
     <a class="self-link" href="#example-ca903e80"></a>
 		
@@ -1501,22 +1498,22 @@ Segment Endpoints</span><a class="self-link" href="#segment-endpoints"></a></h4>
      </figcaption>
     </figure>
    </div>
-   <h3 class="heading settled" data-level="3.2" id="break"><span class="secno">3.2. </span><span class="content">
-Breaking gap decorations: The <a class="css property" data-link-type="property" href="#propdef-column-rule-break" id="ref-for-propdef-column-rule-break">column-rule-break</a>, <a class="css property" data-link-type="property" href="#propdef-row-rule-break" id="ref-for-propdef-row-rule-break">row-rule-break</a>, and <a class="css property" data-link-type="property" href="#propdef-rule-break" id="ref-for-propdef-rule-break">rule-break</a> properties</span><a class="self-link" href="#break"></a></h3>
-   <table class="def propdef" data-link-for-hint="column-rule-break">
+   <h3 class="heading settled" data-level="3.2" id="join"><span class="secno">3.2. </span><span class="content">
+Joining gap decoration segments: The <a class="css property" data-link-type="property" href="#propdef-column-rule-join" id="ref-for-propdef-column-rule-join">column-rule-join</a>, <a class="css property" data-link-type="property" href="#propdef-row-rule-join" id="ref-for-propdef-row-rule-join">row-rule-join</a>, and <a class="css property" data-link-type="property" href="#propdef-rule-join" id="ref-for-propdef-rule-join">rule-join</a> properties</span><a class="self-link" href="#join"></a></h3>
+   <table class="def propdef" data-link-for-hint="column-rule-join">
     <tbody>
      <tr>
       <th>Name:
-      <td><dfn class="css dfn-paneled" data-dfn-type="property" data-export id="propdef-column-rule-break">column-rule-break</dfn>, <dfn class="css dfn-paneled" data-dfn-type="property" data-export id="propdef-row-rule-break">row-rule-break</dfn>
+      <td><dfn class="css dfn-paneled" data-dfn-type="property" data-export id="propdef-column-rule-join">column-rule-join</dfn>, <dfn class="css dfn-paneled" data-dfn-type="property" data-export id="propdef-row-rule-join">row-rule-join</dfn>
      <tr class="value">
       <th><a href="https://www.w3.org/TR/css-values/#value-defs">Value:</a>
-      <td class="prod"><a class="css" data-link-type="maybe" href="#valdef-column-rule-break-none" id="ref-for-valdef-column-rule-break-none">none</a> <a data-link-type="grammar" href="https://drafts.csswg.org/css-values-4/#comb-one" id="ref-for-comb-one">|</a> <a class="css" data-link-type="maybe" href="#valdef-column-rule-break-spanning-item" id="ref-for-valdef-column-rule-break-spanning-item">spanning-item</a> <span id="ref-for-comb-one①">|</span> <a class="css" data-link-type="maybe" href="#valdef-column-rule-break-intersection" id="ref-for-valdef-column-rule-break-intersection">intersection</a>
+      <td class="prod"><a class="css" data-link-type="maybe" href="#valdef-column-rule-join-all" id="ref-for-valdef-column-rule-join-all">all</a> <a data-link-type="grammar" href="https://drafts.csswg.org/css-values-4/#comb-one" id="ref-for-comb-one">|</a> <a class="css" data-link-type="maybe" href="#valdef-column-rule-join-spanning-item" id="ref-for-valdef-column-rule-join-spanning-item">spanning-item</a> <span id="ref-for-comb-one①">|</span> <a class="css" data-link-type="maybe" href="#valdef-column-rule-join-none" id="ref-for-valdef-column-rule-join-none">none</a>
      <tr>
       <th><a href="https://www.w3.org/TR/css-cascade/#initial-values">Initial:</a>
-      <td><a class="css" data-link-type="maybe" href="#valdef-column-rule-break-spanning-item" id="ref-for-valdef-column-rule-break-spanning-item①">spanning-item</a>
+      <td><a class="css" data-link-type="maybe" href="#valdef-column-rule-join-spanning-item" id="ref-for-valdef-column-rule-join-spanning-item①">spanning-item</a>
      <tr>
       <th><a href="https://www.w3.org/TR/css-cascade/#applies-to">Applies to:</a>
-      <td><a data-link-type="dfn" href="https://drafts.csswg.org/css-grid-2/#grid-container" id="ref-for-grid-container③">grid containers</a>, <a data-link-type="dfn" href="https://drafts.csswg.org/css-flexbox-1/#flex-container" id="ref-for-flex-container⑤">flex containers</a>, <a data-link-type="dfn" href="https://drafts.csswg.org/css-multicol-2/#multi-column-container" id="ref-for-multi-column-container④">multicol containers</a>, and <u class="link-error" data-link-for-hint="column-rule-break" data-lt="masonry containers" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;masonry containers&apos;.">masonry containers</u>
+      <td><a data-link-type="dfn" href="https://drafts.csswg.org/css-grid-2/#grid-container" id="ref-for-grid-container②">grid containers</a>, <a data-link-type="dfn" href="https://drafts.csswg.org/css-flexbox-1/#flex-container" id="ref-for-flex-container④">flex containers</a>, <a data-link-type="dfn" href="https://drafts.csswg.org/css-multicol-2/#multi-column-container" id="ref-for-multi-column-container③">multicol containers</a>, and <u class="link-error" data-link-for-hint="column-rule-join" data-lt="masonry containers" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;masonry containers&apos;.">masonry containers</u>
      <tr>
       <th><a href="https://www.w3.org/TR/css-cascade/#inherited-property">Inherited:</a>
       <td>no
@@ -1533,44 +1530,43 @@ Breaking gap decorations: The <a class="css property" data-link-type="property" 
       <th><a href="https://www.w3.org/TR/web-animations/#animation-type">Animation type:</a>
       <td>discrete
    </table>
-   <p>Sets the behavior for breaking decorations within a given <a data-link-type="dfn" href="#gap" id="ref-for-gap⑦">gap</a>.
+   <p>Sets the behavior for breaking decorations within a given <a data-link-type="dfn" href="#gap" id="ref-for-gap⑧">gap</a>.
 	These may cause decorations to extend over multiple <a data-link-type="dfn" href="#gap-decoration-segment" id="ref-for-gap-decoration-segment①②">gap decoration segment</a>s, or to be broken up into multiple separate decorations (i.e., contained within one or more <span id="ref-for-gap-decoration-segment①③">gap decoration segment</span>).
 	Precise details for how to apply these values are given in the steps to <a data-link-type="dfn" href="#determine-candidate-segments" id="ref-for-determine-candidate-segments">determine candidate segments</a>.</p>
    <dl>
-    <dt><dfn class="css dfn-paneled" data-dfn-for="column-rule-break, row-rule-break" data-dfn-type="value" data-export id="valdef-column-rule-break-none">none</dfn>
+    <dt><dfn class="css dfn-paneled" data-dfn-for="column-rule-join, row-rule-join" data-dfn-type="value" data-export id="valdef-column-rule-join-all">all</dfn>
 		
     <dd>
-			Within a given <a data-link-type="dfn" href="#gap" id="ref-for-gap⑧">gap</a>, we combine the <a data-link-type="dfn" href="#gap-decoration-segment" id="ref-for-gap-decoration-segment①④">gap decoration segment</a>s into a single <span id="ref-for-gap-decoration-segment①⑤">gap decoration segment</span>.
+			Within a given <a data-link-type="dfn" href="#gap" id="ref-for-gap⑨">gap</a>, we combine all <a data-link-type="dfn" href="#gap-decoration-segment" id="ref-for-gap-decoration-segment①④">gap decoration segment</a>s into a single <span id="ref-for-gap-decoration-segment①⑤">gap decoration segment</span>.
 			Therefore, a single continuous decoration is painted from one end of the gap to the other, with no breaks.
 		
-    <dt><dfn class="css dfn-paneled" data-dfn-for="column-rule-break, row-rule-break" data-dfn-type="value" data-export id="valdef-column-rule-break-spanning-item">spanning-item</dfn>
+    <dt><dfn class="css dfn-paneled" data-dfn-for="column-rule-join, row-rule-join" data-dfn-type="value" data-export id="valdef-column-rule-join-spanning-item">spanning-item</dfn>
 		
     <dd>
-			Within a given <a data-link-type="dfn" href="#gap" id="ref-for-gap⑨">gap</a>, we combine all <a data-link-type="dfn" href="#gap-decoration-segment" id="ref-for-gap-decoration-segment①⑥">gap decoration segment</a>s that are <strong>not</strong> intersected by a spanning item.
+			Within a given <a data-link-type="dfn" href="#gap" id="ref-for-gap①⓪">gap</a>, we combine all <a data-link-type="dfn" href="#gap-decoration-segment" id="ref-for-gap-decoration-segment①⑥">gap decoration segment</a>s that are <strong>not</strong> intersected by a spanning item.
 			In other words, decorations break at <span id="ref-for-gap-decoration-segment①⑦">gap decoration segment</span>s that are intersected by an item that spans across gaps.
 			Therefore, decorations are only not painted "behind" spanning items.
 		
-    <dt><dfn class="css dfn-paneled" data-dfn-for="column-rule-break, row-rule-break" data-dfn-type="value" data-export id="valdef-column-rule-break-intersection">intersection</dfn>
+    <dt><dfn class="css dfn-paneled" data-dfn-for="column-rule-join, row-rule-join" data-dfn-type="value" data-export id="valdef-column-rule-join-none">none</dfn>
 		
     <dd>
-			Within a given <a data-link-type="dfn" href="#gap" id="ref-for-gap①⓪">gap</a>, gap decorations start and end at visible "T" and "cross" intersections.
-			In other words, decorations are contained within each <a data-link-type="dfn" href="#gap-decoration-segment" id="ref-for-gap-decoration-segment①⑧">gap decoration segment</a>.
+			No <a data-link-type="dfn" href="#gap-decoration-segment" id="ref-for-gap-decoration-segment①⑧">gap decoration segment</a>s are combined. Therefore, decorations are painted only within individual <span id="ref-for-gap-decoration-segment①⑨">gap decoration segment</span>s.
 		
    </dl>
-   <table class="def propdef shorthand" data-link-for-hint="rule-break">
+   <table class="def propdef shorthand" data-link-for-hint="rule-join">
     <tbody>
      <tr>
       <th>Name:
-      <td><dfn class="css dfn-paneled" data-dfn-type="property" data-export id="propdef-rule-break">rule-break</dfn>
+      <td><dfn class="css dfn-paneled" data-dfn-type="property" data-export id="propdef-rule-join">rule-join</dfn>
      <tr class="value">
       <th><a href="https://www.w3.org/TR/css-values/#value-defs">Value:</a>
-      <td class="prod"><a class="css production" data-link-type="property" href="#propdef-column-rule-break" id="ref-for-propdef-column-rule-break①">&lt;'column-rule-break'></a>
+      <td class="prod"><a class="css production" data-link-type="property" href="#propdef-column-rule-join" id="ref-for-propdef-column-rule-join①">&lt;'column-rule-join'></a>
      <tr>
       <th><a href="https://www.w3.org/TR/css-cascade/#initial-values">Initial:</a>
       <td>see individual properties
      <tr>
       <th><a href="https://www.w3.org/TR/css-cascade/#applies-to">Applies to:</a>
-      <td>Same as <a class="css property" data-link-type="property" href="#propdef-column-rule-break" id="ref-for-propdef-column-rule-break②">column-rule-break</a> and <a class="css property" data-link-type="property" href="#propdef-row-rule-break" id="ref-for-propdef-row-rule-break①">row-rule-break</a>
+      <td>Same as <a class="css property" data-link-type="property" href="#propdef-column-rule-join" id="ref-for-propdef-column-rule-join②">column-rule-join</a> and <a class="css property" data-link-type="property" href="#propdef-row-rule-join" id="ref-for-propdef-row-rule-join①">row-rule-join</a>
      <tr>
       <th><a href="https://www.w3.org/TR/css-cascade/#inherited-property">Inherited:</a>
       <td>see individual properties
@@ -1587,7 +1583,7 @@ Breaking gap decorations: The <a class="css property" data-link-type="property" 
       <th><a href="https://www.w3.org/TR/cssom/#serializing-css-values">Canonical order:</a>
       <td>per grammar
    </table>
-   <p>Sets the <a class="css property" data-link-type="property" href="#propdef-column-rule-break" id="ref-for-propdef-column-rule-break③">column-rule-break</a> and <a class="css property" data-link-type="property" href="#propdef-row-rule-break" id="ref-for-propdef-row-rule-break②">row-rule-break</a> properties to the same value.</p>
+   <p>Sets the <a class="css property" data-link-type="property" href="#propdef-column-rule-join" id="ref-for-propdef-column-rule-join③">column-rule-join</a> and <a class="css property" data-link-type="property" href="#propdef-row-rule-join" id="ref-for-propdef-row-rule-join②">row-rule-join</a> properties to the same value.</p>
    <details class="wpt-tests-block" dir="ltr" lang="en" open>
     <summary>Tests</summary>
     <ul class="wpt-tests-list">
@@ -1613,7 +1609,7 @@ Breaking gap decorations: The <a class="css property" data-link-type="property" 
    </details>
    <h4 class="heading settled" data-level="3.2.1" id="determining-candidate-gap-segments"><span class="secno">3.2.1. </span><span class="content">
 Determining Candidate Gap Segments From Break Rules</span><a class="self-link" href="#determining-candidate-gap-segments"></a></h4>
-   <p>Recall that a <a data-link-type="dfn" href="#gap-decoration-segment" id="ref-for-gap-decoration-segment①⑨">gap decoration segment</a>, <var>s</var>, can be represented as:
+   <p>Recall that a <a data-link-type="dfn" href="#gap-decoration-segment" id="ref-for-gap-decoration-segment②⓪">gap decoration segment</a>, <var>s</var>, can be represented as:
 	<var>s</var> = [<var>s</var>.start, <var>s</var>.end]
 	where <var>s</var>.start is the <u class="link-error" data-lt="start endpoint" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;start endpoint&apos; that are marked for export.
   (Possible specs this could be from: css-gaps-1)">start endpoint</u> of the segment, and <var>s</var>.end is the <u class="link-error" data-lt="end endpoint" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;end endpoint&apos; that are marked for export.
@@ -1635,14 +1631,14 @@ Determining Candidate Gap Segments From Break Rules</span><a class="self-link" h
 			
      <li>Let <var>C</var> be an empty list of segments.
 			
-     <li>Let <var>break</var> be the used value of either <a class="css property" data-link-type="property" href="#propdef-column-rule-break" id="ref-for-propdef-column-rule-break④">column-rule-break</a> or <a class="css property" data-link-type="property" href="#propdef-row-rule-break" id="ref-for-propdef-row-rule-break③">row-rule-break</a>, whichever applies to the gap.
+     <li>Let <var>break</var> be the used value of either <a class="css property" data-link-type="property" href="https://drafts.csswg.org/css-gaps-1/#propdef-column-rule-break" id="ref-for-propdef-column-rule-break">column-rule-break</a> or <a class="css property" data-link-type="property" href="https://drafts.csswg.org/css-gaps-1/#propdef-row-rule-break" id="ref-for-propdef-row-rule-break">row-rule-break</a>, whichever applies to the gap.
 
 			
      <li>If <var>S</var> is empty, return <var>C</var>.
 
 			
      <li>
-      If <var>break</var> is <a class="css" data-link-type="maybe" href="#valdef-column-rule-break-none" id="ref-for-valdef-column-rule-break-none①">none</a>:
+      If <var>break</var> is <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-gaps-1/#valdef-column-rule-break-none" id="ref-for-valdef-column-rule-break-none">none</a>:
 				
       <ol>
        <li>Let <var>s</var> be the first segment in <var>S</var>.
@@ -1672,7 +1668,7 @@ Determining Candidate Gap Segments From Break Rules</span><a class="self-link" h
 					
        <li>If <var>candidate</var>’s endpoints are <a data-link-type="dfn" href="#discontiguous" id="ref-for-discontiguous①">discontiguous</a>, go to step 9.
 					
-       <li>If <var>break</var> is <a class="css" data-link-type="maybe" href="#valdef-column-rule-break-intersection" id="ref-for-valdef-column-rule-break-intersection①">intersection</a> and <var>candidate</var> is not <a data-link-type="dfn" href="#flanked-by-spanning-items" id="ref-for-flanked-by-spanning-items">flanked by spanning items</a>, go to step 9.
+       <li>If <var>break</var> is <a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-gaps-1/#valdef-column-rule-break-intersection" id="ref-for-valdef-column-rule-break-intersection">intersection</a> and <var>candidate</var> is not <a data-link-type="dfn" href="#flanked-by-spanning-items" id="ref-for-flanked-by-spanning-items">flanked by spanning items</a>, go to step 9.
 					
        <li>Remove the first segment from <var>S</var>.
 					
@@ -1688,7 +1684,7 @@ Determining Candidate Gap Segments From Break Rules</span><a class="self-link" h
 		
     </ol>
    </div>
-   <p>The following examples illustrate various settings for the <a href="#break">*-rule-break</a> properties.
+   <p>The following examples illustrate various settings for the <a href="#join">*-rule-join</a> properties.
 To make the differences more apparent, the <a href="#inset">*-rule-*-inset</a> properties are set to <span class="css">0</span> and <a href="#visibility-rules">*-rule-visibility-items</a> is set to <a class="css" data-link-type="maybe" href="#valdef-column-rule-visibility-items-all" id="ref-for-valdef-column-rule-visibility-items-all">all</a>.</p>
    <div class="example" id="example-916561f7">
     <a class="self-link" href="#example-916561f7"></a>
@@ -1787,8 +1783,8 @@ To make the differences more apparent, the <a href="#inset">*-rule-*-inset</a> p
     </figure>
    </div>
    <p class="note" role="note"><span class="marker">Note:</span> Because flexbox has no concept of spanning items,
-	<a class="css" data-link-type="maybe" href="#valdef-column-rule-break-spanning-item" id="ref-for-valdef-column-rule-break-spanning-item②">spanning-item</a> on a flexbox has the same effect as
-	<a class="css" data-link-type="maybe" href="#valdef-column-rule-break-none" id="ref-for-valdef-column-rule-break-none②">none</a>.</p>
+	<a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-gaps-1/#valdef-column-rule-break-spanning-item" id="ref-for-valdef-column-rule-break-spanning-item">spanning-item</a> on a flexbox has the same effect as
+	<a class="css" data-link-type="maybe" href="https://drafts.csswg.org/css-gaps-1/#valdef-column-rule-break-none" id="ref-for-valdef-column-rule-break-none①">none</a>.</p>
    <div class="example" id="example-b4618ceb">
     <a class="self-link" href="#example-b4618ceb"></a>
 		
@@ -1829,7 +1825,7 @@ Painting Gap Decorations with Visibility Rules</span><a class="self-link" href="
       <td>all
      <tr>
       <th><a href="https://www.w3.org/TR/css-cascade/#applies-to">Applies to:</a>
-      <td><a data-link-type="dfn" href="https://drafts.csswg.org/css-grid-2/#grid-container" id="ref-for-grid-container④">grid containers</a>
+      <td><a data-link-type="dfn" href="https://drafts.csswg.org/css-grid-2/#grid-container" id="ref-for-grid-container③">grid containers</a>
      <tr>
       <th><a href="https://www.w3.org/TR/css-cascade/#inherited-property">Inherited:</a>
       <td>no
@@ -2028,7 +2024,7 @@ Adjusting gap segment endpoints: The <a class="css property" data-link-type="pro
       <td><a class="css" data-link-type="maybe" href="#valdef-rule-inset-auto" id="ref-for-valdef-rule-inset-auto①">auto</a>
      <tr>
       <th><a href="https://www.w3.org/TR/css-cascade/#applies-to">Applies to:</a>
-      <td><a data-link-type="dfn" href="https://drafts.csswg.org/css-grid-2/#grid-container" id="ref-for-grid-container⑤">grid containers</a>, <a data-link-type="dfn" href="https://drafts.csswg.org/css-flexbox-1/#flex-container" id="ref-for-flex-container⑥">flex containers</a>, <a data-link-type="dfn" href="https://drafts.csswg.org/css-multicol-2/#multi-column-container" id="ref-for-multi-column-container⑤">multicol containers</a>, and <a data-link-type="dfn" href="https://drafts.csswg.org/css-grid-3/#grid-lanes-container" id="ref-for-grid-lanes-container①">grid lanes containers</a>
+      <td><a data-link-type="dfn" href="https://drafts.csswg.org/css-grid-2/#grid-container" id="ref-for-grid-container④">grid containers</a>, <a data-link-type="dfn" href="https://drafts.csswg.org/css-flexbox-1/#flex-container" id="ref-for-flex-container⑤">flex containers</a>, <a data-link-type="dfn" href="https://drafts.csswg.org/css-multicol-2/#multi-column-container" id="ref-for-multi-column-container④">multicol containers</a>, and <a data-link-type="dfn" href="https://drafts.csswg.org/css-grid-3/#grid-lanes-container" id="ref-for-grid-lanes-container①">grid lanes containers</a>
      <tr>
       <th><a href="https://www.w3.org/TR/css-cascade/#inherited-property">Inherited:</a>
       <td>no
@@ -2058,7 +2054,7 @@ Adjusting gap segment endpoints: The <a class="css property" data-link-type="pro
       <td><a class="css" data-link-type="maybe" href="#valdef-rule-inset-auto" id="ref-for-valdef-rule-inset-auto③">auto</a>
      <tr>
       <th><a href="https://www.w3.org/TR/css-cascade/#applies-to">Applies to:</a>
-      <td><a data-link-type="dfn" href="https://drafts.csswg.org/css-grid-2/#grid-container" id="ref-for-grid-container⑥">grid containers</a>, <a data-link-type="dfn" href="https://drafts.csswg.org/css-flexbox-1/#flex-container" id="ref-for-flex-container⑦">flex containers</a>, <a data-link-type="dfn" href="https://drafts.csswg.org/css-multicol-2/#multi-column-container" id="ref-for-multi-column-container⑥">multicol containers</a>, and <a data-link-type="dfn" href="https://drafts.csswg.org/css-grid-3/#grid-lanes-container" id="ref-for-grid-lanes-container②">grid lanes containers</a>
+      <td><a data-link-type="dfn" href="https://drafts.csswg.org/css-grid-2/#grid-container" id="ref-for-grid-container⑤">grid containers</a>, <a data-link-type="dfn" href="https://drafts.csswg.org/css-flexbox-1/#flex-container" id="ref-for-flex-container⑥">flex containers</a>, <a data-link-type="dfn" href="https://drafts.csswg.org/css-multicol-2/#multi-column-container" id="ref-for-multi-column-container⑤">multicol containers</a>, and <a data-link-type="dfn" href="https://drafts.csswg.org/css-grid-3/#grid-lanes-container" id="ref-for-grid-lanes-container②">grid lanes containers</a>
      <tr>
       <th><a href="https://www.w3.org/TR/css-cascade/#inherited-property">Inherited:</a>
       <td>no
@@ -2079,7 +2075,7 @@ Adjusting gap segment endpoints: The <a class="css property" data-link-type="pro
 	<a data-link-type="dfn" href="#segment-endpoint" id="ref-for-segment-endpoint①⑥">segment endpoint</a>s which would normally determine where decorations start and end.</p>
    <p>For the interior properties,
 	a value of <span class="css">-50%</span> stretches the <a data-link-type="dfn" href="#gap-decoration" id="ref-for-gap-decoration①②">gap decoration</a> up to the center of the intersection that is formed by the gaps,
-	and a value of <span class="css">0</span> places the <span id="ref-for-gap-decoration①③">gap decoration</span> start and end points at the <a data-link-type="dfn" href="#start-segment-endpoint" id="ref-for-start-segment-endpoint①⑤">start segment endpoint</a> and <a data-link-type="dfn" href="#end-segment-endpoint" id="ref-for-end-segment-endpoint①③">end segment endpoint</a> of the <a data-link-type="dfn" href="#gap-decoration-segment" id="ref-for-gap-decoration-segment②⓪">gap decoration segment</a>.</p>
+	and a value of <span class="css">0</span> places the <span id="ref-for-gap-decoration①③">gap decoration</span> start and end points at the <a data-link-type="dfn" href="#start-segment-endpoint" id="ref-for-start-segment-endpoint①⑤">start segment endpoint</a> and <a data-link-type="dfn" href="#end-segment-endpoint" id="ref-for-end-segment-endpoint①③">end segment endpoint</a> of the <a data-link-type="dfn" href="#gap-decoration-segment" id="ref-for-gap-decoration-segment②①">gap decoration segment</a>.</p>
    <dl>
     <dt><dfn class="css dfn-paneled" data-dfn-for="rule-inset" data-dfn-type="value" data-export id="valdef-rule-inset-auto">auto</dfn>
 		
@@ -2614,7 +2610,7 @@ Gap decoration overlap: The <a class="css property" data-link-type="property" hr
       <td>row-over-column
      <tr>
       <th><a href="https://www.w3.org/TR/css-cascade/#applies-to">Applies to:</a>
-      <td><a data-link-type="dfn" href="https://drafts.csswg.org/css-grid-2/#grid-container" id="ref-for-grid-container⑦">grid containers</a>, <a data-link-type="dfn" href="https://drafts.csswg.org/css-flexbox-1/#flex-container" id="ref-for-flex-container⑧">flex containers</a>, and <u class="link-error" data-link-for-hint="rule-overlap" data-lt="masonry containers" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;masonry containers&apos;.">masonry containers</u>
+      <td><a data-link-type="dfn" href="https://drafts.csswg.org/css-grid-2/#grid-container" id="ref-for-grid-container⑥">grid containers</a>, <a data-link-type="dfn" href="https://drafts.csswg.org/css-flexbox-1/#flex-container" id="ref-for-flex-container⑦">flex containers</a>, and <u class="link-error" data-link-for-hint="rule-overlap" data-lt="masonry containers" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;masonry containers&apos;.">masonry containers</u>
      <tr>
       <th><a href="https://www.w3.org/TR/css-cascade/#inherited-property">Inherited:</a>
       <td>no
@@ -2696,7 +2692,7 @@ Gap decoration color: The <a class="css property" data-link-type="property" href
       <td>currentcolor
      <tr>
       <th><a href="https://www.w3.org/TR/css-cascade/#applies-to">Applies to:</a>
-      <td><a data-link-type="dfn" href="https://drafts.csswg.org/css-grid-2/#grid-container" id="ref-for-grid-container⑧">grid containers</a>, <a data-link-type="dfn" href="https://drafts.csswg.org/css-flexbox-1/#flex-container" id="ref-for-flex-container⑨">flex containers</a>, <a data-link-type="dfn" href="https://drafts.csswg.org/css-multicol-2/#multi-column-container" id="ref-for-multi-column-container⑦">multicol containers</a>, and <a data-link-type="dfn" href="https://drafts.csswg.org/css-grid-3/#grid-lanes-container" id="ref-for-grid-lanes-container③">grid lanes containers</a>
+      <td><a data-link-type="dfn" href="https://drafts.csswg.org/css-grid-2/#grid-container" id="ref-for-grid-container⑦">grid containers</a>, <a data-link-type="dfn" href="https://drafts.csswg.org/css-flexbox-1/#flex-container" id="ref-for-flex-container⑧">flex containers</a>, <a data-link-type="dfn" href="https://drafts.csswg.org/css-multicol-2/#multi-column-container" id="ref-for-multi-column-container⑥">multicol containers</a>, and <a data-link-type="dfn" href="https://drafts.csswg.org/css-grid-3/#grid-lanes-container" id="ref-for-grid-lanes-container③">grid lanes containers</a>
      <tr>
       <th><a href="https://www.w3.org/TR/css-cascade/#inherited-property">Inherited:</a>
       <td>no
@@ -2760,7 +2756,7 @@ Gap decoration style: The <a class="css property" data-link-type="property" href
       <td>none
      <tr>
       <th><a href="https://www.w3.org/TR/css-cascade/#applies-to">Applies to:</a>
-      <td><a data-link-type="dfn" href="https://drafts.csswg.org/css-grid-2/#grid-container" id="ref-for-grid-container⑨">grid containers</a>, <a data-link-type="dfn" href="https://drafts.csswg.org/css-flexbox-1/#flex-container" id="ref-for-flex-container①⓪">flex containers</a>, <a data-link-type="dfn" href="https://drafts.csswg.org/css-multicol-2/#multi-column-container" id="ref-for-multi-column-container⑧">multicol containers</a>, and <a data-link-type="dfn" href="https://drafts.csswg.org/css-grid-3/#grid-lanes-container" id="ref-for-grid-lanes-container④">grid lanes containers</a>
+      <td><a data-link-type="dfn" href="https://drafts.csswg.org/css-grid-2/#grid-container" id="ref-for-grid-container⑧">grid containers</a>, <a data-link-type="dfn" href="https://drafts.csswg.org/css-flexbox-1/#flex-container" id="ref-for-flex-container⑨">flex containers</a>, <a data-link-type="dfn" href="https://drafts.csswg.org/css-multicol-2/#multi-column-container" id="ref-for-multi-column-container⑦">multicol containers</a>, and <a data-link-type="dfn" href="https://drafts.csswg.org/css-grid-3/#grid-lanes-container" id="ref-for-grid-lanes-container④">grid lanes containers</a>
      <tr>
       <th><a href="https://www.w3.org/TR/css-cascade/#inherited-property">Inherited:</a>
       <td>no
@@ -2828,7 +2824,7 @@ Gap decoration width: The <a class="css property" data-link-type="property" href
       <td>medium
      <tr>
       <th><a href="https://www.w3.org/TR/css-cascade/#applies-to">Applies to:</a>
-      <td><a data-link-type="dfn" href="https://drafts.csswg.org/css-grid-2/#grid-container" id="ref-for-grid-container①⓪">grid containers</a>, <a data-link-type="dfn" href="https://drafts.csswg.org/css-flexbox-1/#flex-container" id="ref-for-flex-container①①">flex containers</a>, <a data-link-type="dfn" href="https://drafts.csswg.org/css-multicol-2/#multi-column-container" id="ref-for-multi-column-container⑨">multicol containers</a>, and <a data-link-type="dfn" href="https://drafts.csswg.org/css-grid-3/#grid-lanes-container" id="ref-for-grid-lanes-container⑤">grid lanes containers</a>
+      <td><a data-link-type="dfn" href="https://drafts.csswg.org/css-grid-2/#grid-container" id="ref-for-grid-container⑨">grid containers</a>, <a data-link-type="dfn" href="https://drafts.csswg.org/css-flexbox-1/#flex-container" id="ref-for-flex-container①⓪">flex containers</a>, <a data-link-type="dfn" href="https://drafts.csswg.org/css-multicol-2/#multi-column-container" id="ref-for-multi-column-container⑧">multicol containers</a>, and <a data-link-type="dfn" href="https://drafts.csswg.org/css-grid-3/#grid-lanes-container" id="ref-for-grid-lanes-container⑤">grid lanes containers</a>
      <tr>
       <th><a href="https://www.w3.org/TR/css-cascade/#inherited-property">Inherited:</a>
       <td>no
@@ -3575,7 +3571,12 @@ Non-experimental implementations</span><a class="self-link" href="#w3c-testing">
   <h2 class="heading no-num no-ref settled" id="index"><span class="content">Index</span><a class="self-link" href="#index"></a></h2>
   <h3 class="heading no-num no-ref settled" id="index-defined-here"><span class="content">Terms defined by this specification</span><a class="self-link" href="#index-defined-here"></a></h3>
   <ul class="index">
-   <li><a href="#valdef-column-rule-visibility-items-all">all</a><span>, in § 3.3</span>
+   <li>
+    all
+    <ul>
+     <li><a href="#valdef-column-rule-join-all">value for column-rule-join, row-rule-join</a><span>, in § 3.2</span>
+     <li><a href="#valdef-column-rule-visibility-items-all">value for column-rule-visibility-items, row-rule-visibility-items</a><span>, in § 3.3</span>
+    </ul>
    <li><a href="#apply-visibility-rules-to-the-candidate-segments">apply visibility rules to the candidate segments</a><span>, in § 3.3</span>
    <li><a href="#valdef-column-rule-visibility-items-around">around</a><span>, in § 3.3</span>
    <li><a href="#assign-gap-decoration-values">assign gap decoration values</a><span>, in § 4.4</span>
@@ -3591,7 +3592,6 @@ Non-experimental implementations</span><a class="self-link" href="#w3c-testing">
    <li><a href="#valdef-column-rule-color-color">&lt;color></a><span>, in § 4.1</span>
    <li><a href="#column-gap">column gap</a><span>, in § 2</span>
    <li><a href="#propdef-column-rule">column-rule</a><span>, in § 4.5</span>
-   <li><a href="#propdef-column-rule-break">column-rule-break</a><span>, in § 3.2</span>
    <li><a href="#propdef-column-rule-color">column-rule-color</a><span>, in § 4.1</span>
    <li><a href="#propdef-column-rule-edge-inset">column-rule-edge-inset</a><span>, in § 3.4</span>
    <li><a href="#propdef-column-rule-edge-inset-end">column-rule-edge-inset-end</a><span>, in § 3.4</span>
@@ -3602,6 +3602,7 @@ Non-experimental implementations</span><a class="self-link" href="#w3c-testing">
    <li><a href="#propdef-column-rule-interior-inset">column-rule-interior-inset</a><span>, in § 3.4</span>
    <li><a href="#propdef-column-rule-interior-inset-end">column-rule-interior-inset-end</a><span>, in § 3.4</span>
    <li><a href="#propdef-column-rule-interior-inset-start">column-rule-interior-inset-start</a><span>, in § 3.4</span>
+   <li><a href="#propdef-column-rule-join">column-rule-join</a><span>, in § 3.2</span>
    <li><a href="#propdef-column-rule-style">column-rule-style</a><span>, in § 4.2</span>
    <li><a href="#propdef-column-rule-visibility-items">column-rule-visibility-items</a><span>, in § 3.3</span>
    <li><a href="#propdef-column-rule-width">column-rule-width</a><span>, in § 4.3</span>
@@ -3624,7 +3625,6 @@ Non-experimental implementations</span><a class="self-link" href="#w3c-testing">
    <li><a href="#typedef-gap-rule-or-repeat">&lt;gap-rule-or-repeat></a><span>, in § 4.5</span>
    <li><a href="#integer-repeater">integer repeater</a><span>, in § 4.4</span>
    <li><a href="#interior-segment-endpoint">interior segment endpoint</a><span>, in § 3.4</span>
-   <li><a href="#valdef-column-rule-break-intersection">intersection</a><span>, in § 3.2</span>
    <li><a href="#typedef-line-color-list">&lt;line-color-list></a><span>, in § 4.1</span>
    <li><a href="#typedef-line-color-or-repeat">&lt;line-color-or-repeat></a><span>, in § 4.1</span>
    <li><a href="#typedef-line-style-list">&lt;line-style-list></a><span>, in § 4.2</span>
@@ -3632,14 +3632,13 @@ Non-experimental implementations</span><a class="self-link" href="#w3c-testing">
    <li><a href="#typedef-line-width-list">&lt;line-width-list></a><span>, in § 4.3</span>
    <li><a href="#typedef-line-width-or-repeat">&lt;line-width-or-repeat></a><span>, in § 4.3</span>
    <li><a href="#negative-gap-decoration-segment">negative gap decoration segment</a><span>, in § 3.1.2</span>
-   <li><a href="#valdef-column-rule-break-none">none</a><span>, in § 3.2</span>
+   <li><a href="#valdef-column-rule-join-none">none</a><span>, in § 3.2</span>
    <li><a href="#funcdef-repeat-line-color-repeat">repeat()</a><span>, in § 4.4</span>
    <li><a href="#typedef-repeat-line-color">&lt;repeat-line-color></a><span>, in § 4.1</span>
    <li><a href="#typedef-repeat-line-style">&lt;repeat-line-style></a><span>, in § 4.2</span>
    <li><a href="#typedef-repeat-line-width">&lt;repeat-line-width></a><span>, in § 4.3</span>
    <li><a href="#row-gap">row gap</a><span>, in § 2</span>
    <li><a href="#propdef-row-rule">row-rule</a><span>, in § 4.5</span>
-   <li><a href="#propdef-row-rule-break">row-rule-break</a><span>, in § 3.2</span>
    <li><a href="#propdef-row-rule-color">row-rule-color</a><span>, in § 4.1</span>
    <li><a href="#propdef-row-rule-edge-inset">row-rule-edge-inset</a><span>, in § 3.4</span>
    <li><a href="#propdef-row-rule-edge-inset-end">row-rule-edge-inset-end</a><span>, in § 3.4</span>
@@ -3650,23 +3649,24 @@ Non-experimental implementations</span><a class="self-link" href="#w3c-testing">
    <li><a href="#propdef-row-rule-interior-inset">row-rule-interior-inset</a><span>, in § 3.4</span>
    <li><a href="#propdef-row-rule-interior-inset-end">row-rule-interior-inset-end</a><span>, in § 3.4</span>
    <li><a href="#propdef-row-rule-interior-inset-start">row-rule-interior-inset-start</a><span>, in § 3.4</span>
+   <li><a href="#propdef-row-rule-join">row-rule-join</a><span>, in § 3.2</span>
    <li><a href="#propdef-row-rule-style">row-rule-style</a><span>, in § 4.2</span>
    <li><a href="#propdef-row-rule-visibility-items">row-rule-visibility-items</a><span>, in § 3.3</span>
    <li><a href="#propdef-row-rule-width">row-rule-width</a><span>, in § 4.3</span>
    <li><a href="#propdef-rule">rule</a><span>, in § 4.6</span>
-   <li><a href="#propdef-rule-break">rule-break</a><span>, in § 3.2</span>
    <li><a href="#propdef-rule-color">rule-color</a><span>, in § 4.6</span>
    <li><a href="#propdef-rule-edge-inset">rule-edge-inset</a><span>, in § 3.4</span>
    <li><a href="#propdef-rule-inset">rule-inset</a><span>, in § 3.4</span>
    <li><a href="#propdef-rule-inset-end">rule-inset-end</a><span>, in § 3.4</span>
    <li><a href="#propdef-rule-inset-start">rule-inset-start</a><span>, in § 3.4</span>
    <li><a href="#propdef-rule-interior-inset">rule-interior-inset</a><span>, in § 3.4</span>
+   <li><a href="#propdef-rule-join">rule-join</a><span>, in § 3.2</span>
    <li><a href="#propdef-rule-overlap">rule-overlap</a><span>, in § 3.5</span>
    <li><a href="#propdef-rule-style">rule-style</a><span>, in § 4.6</span>
    <li><a href="#propdef-rule-visibility-items">rule-visibility-items</a><span>, in § 3.3</span>
    <li><a href="#propdef-rule-width">rule-width</a><span>, in § 4.6</span>
    <li><a href="#segment-endpoint">segment endpoint</a><span>, in § 3.1.1</span>
-   <li><a href="#valdef-column-rule-break-spanning-item">spanning-item</a><span>, in § 3.2</span>
+   <li><a href="#valdef-column-rule-join-spanning-item">spanning-item</a><span>, in § 3.2</span>
    <li><a href="#start-segment-endpoint">start segment endpoint</a><span>, in § 3.1.1</span>
    <li><a href="#union">UNION</a><span>, in § 3.2.1</span>
   </ul>
@@ -3703,7 +3703,12 @@ Non-experimental implementations</span><a class="self-link" href="#w3c-testing">
    <li>
     <a data-link-type="biblio">[CSS-GAPS-1]</a> defines the following terms:
     <ul>
+     <li><span class="dfn-paneled" id="d76a772c">column-rule-break</span>
+     <li><span class="dfn-paneled" id="ae6529c1">intersection</span>
+     <li><span class="dfn-paneled" id="6c9b2f4e">none</span>
+     <li><span class="dfn-paneled" id="54029df1">row-rule-break</span>
      <li><span class="dfn-paneled" id="378c32c7">rule-paint-order</span>
+     <li><span class="dfn-paneled" id="92d34c05">spanning-item</span>
     </ul>
    <li>
     <a data-link-type="biblio">[CSS-GRID-2]</a> defines the following terms:
@@ -3760,6 +3765,8 @@ Non-experimental implementations</span><a class="self-link" href="#w3c-testing">
    <dd>Chris Lilley; et al. <a href="https://drafts.csswg.org/css-color-5/"><cite>CSS Color Module Level 5</cite></a>. URL: <a href="https://drafts.csswg.org/css-color-5/">https://drafts.csswg.org/css-color-5/</a>
    <dt id="biblio-css-flexbox-1">[CSS-FLEXBOX-1]
    <dd>Elika Etemad; Tab Atkins Jr.; Rossen Atanassov. <a href="https://drafts.csswg.org/css-flexbox/"><cite>CSS Flexible Box Layout Module Level 1</cite></a>. URL: <a href="https://drafts.csswg.org/css-flexbox/">https://drafts.csswg.org/css-flexbox/</a>
+   <dt id="biblio-css-gaps-1">[CSS-GAPS-1]
+   <dd>Kevin Babbitt. <a href="https://drafts.csswg.org/css-gaps-1/"><cite>CSS Gap Decorations Module Level 1</cite></a>. URL: <a href="https://drafts.csswg.org/css-gaps-1/">https://drafts.csswg.org/css-gaps-1/</a>
    <dt id="biblio-css-grid-1">[CSS-GRID-1]
    <dd>Tab Atkins Jr.; et al. <a href="https://drafts.csswg.org/css-grid-1/"><cite>CSS Grid Layout Module Level 1</cite></a>. URL: <a href="https://drafts.csswg.org/css-grid-1/">https://drafts.csswg.org/css-grid-1/</a>
    <dt id="biblio-css-grid-2">[CSS-GRID-2]
@@ -3780,11 +3787,6 @@ Non-experimental implementations</span><a class="self-link" href="#w3c-testing">
    <dd>S. Bradner. <a href="https://datatracker.ietf.org/doc/html/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. March 1997. Best Current Practice. URL: <a href="https://datatracker.ietf.org/doc/html/rfc2119">https://datatracker.ietf.org/doc/html/rfc2119</a>
    <dt id="biblio-web-animations-1">[WEB-ANIMATIONS-1]
    <dd>Brian Birtles; et al. <a href="https://drafts.csswg.org/web-animations-1/"><cite>Web Animations</cite></a>. URL: <a href="https://drafts.csswg.org/web-animations-1/">https://drafts.csswg.org/web-animations-1/</a>
-  </dl>
-  <h3 class="heading no-num no-ref settled" id="informative"><span class="content">Informative References</span><a class="self-link" href="#informative"></a></h3>
-  <dl>
-   <dt id="biblio-css-gaps-1">[CSS-GAPS-1]
-   <dd>Kevin Babbitt. <a href="https://drafts.csswg.org/css-gaps-1/"><cite>CSS Gap Decorations Module Level 1</cite></a>. URL: <a href="https://drafts.csswg.org/css-gaps-1/">https://drafts.csswg.org/css-gaps-1/</a>
   </dl>
   <h2 class="heading no-num no-ref settled" id="property-index"><span class="content">Property Index</span><a class="self-link" href="#property-index"></a></h2>
   <div class="big-element-wrapper">
@@ -3811,16 +3813,6 @@ Non-experimental implementations</span><a class="self-link" href="#w3c-testing">
       <td>see individual properties
       <td>per grammar
       <td>see individual properties
-     <tr>
-      <th scope="row"><a class="css" data-link-type="property" href="#propdef-column-rule-break" id="ref-for-propdef-column-rule-break⑤">column-rule-break</a>
-      <td>none | spanning-item | intersection
-      <td>spanning-item
-      <td>grid containers, flex containers, multicol containers, and masonry containers
-      <td>no
-      <td>n/a
-      <td>discrete
-      <td>per grammar
-      <td>as specified
      <tr>
       <th scope="row"><a class="css" data-link-type="property" href="#propdef-column-rule-color" id="ref-for-propdef-column-rule-color④">column-rule-color</a>
       <td>&lt;line-color-list> | &lt;auto-line-color-list>
@@ -3924,6 +3916,16 @@ row-rule-edge-inset-start and row-rule-interior-inset-start for row-rule-inset-s
       <td>per grammar
       <td>as specified
      <tr>
+      <th scope="row"><a class="css" data-link-type="property" href="#propdef-column-rule-join" id="ref-for-propdef-column-rule-join④">column-rule-join</a>
+      <td>all | spanning-item | none
+      <td>spanning-item
+      <td>grid containers, flex containers, multicol containers, and masonry containers
+      <td>no
+      <td>n/a
+      <td>discrete
+      <td>per grammar
+      <td>as specified
+     <tr>
       <th scope="row"><a class="css" data-link-type="property" href="#propdef-column-rule-style" id="ref-for-propdef-column-rule-style⑤">column-rule-style</a>
       <td>&lt;line-style-list> | &lt;auto-line-style-list>
       <td>none
@@ -3963,16 +3965,6 @@ row-rule-edge-inset-start and row-rule-interior-inset-start for row-rule-inset-s
       <td>see individual properties
       <td>per grammar
       <td>see individual properties
-     <tr>
-      <th scope="row"><a class="css" data-link-type="property" href="#propdef-row-rule-break" id="ref-for-propdef-row-rule-break④">row-rule-break</a>
-      <td>none | spanning-item | intersection
-      <td>spanning-item
-      <td>grid containers, flex containers, multicol containers, and masonry containers
-      <td>no
-      <td>n/a
-      <td>discrete
-      <td>per grammar
-      <td>as specified
      <tr>
       <th scope="row"><a class="css" data-link-type="property" href="#propdef-row-rule-color" id="ref-for-propdef-row-rule-color②">row-rule-color</a>
       <td>&lt;line-color-list> | &lt;auto-line-color-list>
@@ -4076,6 +4068,16 @@ row-rule-edge-inset-start and row-rule-interior-inset-start for row-rule-inset-s
       <td>per grammar
       <td>as specified
      <tr>
+      <th scope="row"><a class="css" data-link-type="property" href="#propdef-row-rule-join" id="ref-for-propdef-row-rule-join③">row-rule-join</a>
+      <td>all | spanning-item | none
+      <td>spanning-item
+      <td>grid containers, flex containers, multicol containers, and masonry containers
+      <td>no
+      <td>n/a
+      <td>discrete
+      <td>per grammar
+      <td>as specified
+     <tr>
       <th scope="row"><a class="css" data-link-type="property" href="#propdef-row-rule-style" id="ref-for-propdef-row-rule-style②">row-rule-style</a>
       <td>&lt;line-style-list> | &lt;auto-line-style-list>
       <td>none
@@ -4111,16 +4113,6 @@ row-rule-edge-inset-start and row-rule-interior-inset-start for row-rule-inset-s
       <td>see individual properties
       <td>Same as column-rule and row-rule
       <td>no
-      <td>see individual properties
-      <td>see individual properties
-      <td>per grammar
-      <td>see individual properties
-     <tr>
-      <th scope="row"><a class="css" data-link-type="property" href="#propdef-rule-break" id="ref-for-propdef-rule-break①">rule-break</a>
-      <td>&lt;'column-rule-break'>
-      <td>see individual properties
-      <td>Same as column-rule-break and row-rule-break
-      <td>see individual properties
       <td>see individual properties
       <td>see individual properties
       <td>per grammar
@@ -4180,6 +4172,16 @@ row-rule-edge-inset-start and row-rule-interior-inset-start for row-rule-inset-s
       <td>&lt;'column-rule-interior-inset'>
       <td>see individual properties
       <td>Same as column-rule-interior-inset and row-rule-interior-inset
+      <td>see individual properties
+      <td>see individual properties
+      <td>see individual properties
+      <td>per grammar
+      <td>see individual properties
+     <tr>
+      <th scope="row"><a class="css" data-link-type="property" href="#propdef-rule-join" id="ref-for-propdef-rule-join①">rule-join</a>
+      <td>&lt;'column-rule-join'>
+      <td>see individual properties
+      <td>Same as column-rule-join and row-rule-join
       <td>see individual properties
       <td>see individual properties
       <td>see individual properties
@@ -4429,61 +4431,65 @@ function parseHTML(markup) {
 let dfnPanelData = {
 "00439ff7": {"dfnID":"00439ff7","dfnText":"flex line","external":true,"refSections":[{"refs":[{"id":"ref-for-flex-line"},{"id":"ref-for-flex-line\u2460"}],"title":"2. \n   Gaps"}],"url":"https://drafts.csswg.org/css-flexbox-1/#flex-line"},
 "017da30a": {"dfnID":"017da30a","dfnText":"grid column","external":true,"refSections":[{"refs":[{"id":"ref-for-grid-column"}],"title":"2. \n   Gaps"}],"url":"https://drafts.csswg.org/css-grid-2/#grid-column"},
-"0482986b": {"dfnID":"0482986b","dfnText":"grid lanes container","external":true,"refSections":[{"refs":[{"id":"ref-for-grid-lanes-container"}],"title":"3. \nGap decorations"},{"refs":[{"id":"ref-for-grid-lanes-container\u2460"},{"id":"ref-for-grid-lanes-container\u2461"}],"title":"3.4. \nAdjusting gap segment endpoints: The rule-inset properties"},{"refs":[{"id":"ref-for-grid-lanes-container\u2462"}],"title":"4.1. \nGap decoration color: The column-rule-color and row-rule-color properties"},{"refs":[{"id":"ref-for-grid-lanes-container\u2463"}],"title":"4.2. \nGap decoration style: The column-rule-style and row-rule-style properties"},{"refs":[{"id":"ref-for-grid-lanes-container\u2464"}],"title":"4.3. \nGap decoration width: The column-rule-width and row-rule-width properties"}],"url":"https://drafts.csswg.org/css-grid-3/#grid-lanes-container"},
+"0482986b": {"dfnID":"0482986b","dfnText":"grid lanes container","external":true,"refSections":[{"refs":[{"id":"ref-for-grid-lanes-container"}],"title":"2. \n   Gaps"},{"refs":[{"id":"ref-for-grid-lanes-container\u2460"},{"id":"ref-for-grid-lanes-container\u2461"}],"title":"3.4. \nAdjusting gap segment endpoints: The rule-inset properties"},{"refs":[{"id":"ref-for-grid-lanes-container\u2462"}],"title":"4.1. \nGap decoration color: The column-rule-color and row-rule-color properties"},{"refs":[{"id":"ref-for-grid-lanes-container\u2463"}],"title":"4.2. \nGap decoration style: The column-rule-style and row-rule-style properties"},{"refs":[{"id":"ref-for-grid-lanes-container\u2464"}],"title":"4.3. \nGap decoration width: The column-rule-width and row-rule-width properties"}],"url":"https://drafts.csswg.org/css-grid-3/#grid-lanes-container"},
 "07cc8d20": {"dfnID":"07cc8d20","dfnText":"column-gap","external":true,"refSections":[{"refs":[{"id":"ref-for-propdef-column-gap"}],"title":"2. \n   Gaps"},{"refs":[{"id":"ref-for-propdef-column-gap\u2460"}],"title":"3.4. \nAdjusting gap segment endpoints: The rule-inset properties"}],"url":"https://drafts.csswg.org/css-align-3/#propdef-column-gap"},
 "1548047a": {"dfnID":"1548047a","dfnText":"<color>","external":true,"refSections":[{"refs":[{"id":"ref-for-typedef-color"},{"id":"ref-for-typedef-color\u2460"},{"id":"ref-for-typedef-color\u2461"},{"id":"ref-for-typedef-color\u2462"}],"title":"4.1. \nGap decoration color: The column-rule-color and row-rule-color properties"},{"refs":[{"id":"ref-for-typedef-color\u2463"}],"title":"4.5. \nGap decoration shorthands: The column-rule and row-rule properties"}],"url":"https://drafts.csswg.org/css-color-5/#typedef-color"},
 "18222566": {"dfnID":"18222566","dfnText":"<length-percentage>","external":true,"refSections":[{"refs":[{"id":"ref-for-typedef-length-percentage"},{"id":"ref-for-typedef-length-percentage\u2460"},{"id":"ref-for-typedef-length-percentage\u2461"},{"id":"ref-for-typedef-length-percentage\u2462"},{"id":"ref-for-typedef-length-percentage\u2463"},{"id":"ref-for-typedef-length-percentage\u2464"},{"id":"ref-for-typedef-length-percentage\u2465"},{"id":"ref-for-typedef-length-percentage\u2466"},{"id":"ref-for-typedef-length-percentage\u2467"},{"id":"ref-for-typedef-length-percentage\u2468"}],"title":"3.4. \nAdjusting gap segment endpoints: The rule-inset properties"}],"url":"https://drafts.csswg.org/css-values-4/#typedef-length-percentage"},
 "1adf69d9": {"dfnID":"1adf69d9","dfnText":"grid row","external":true,"refSections":[{"refs":[{"id":"ref-for-grid-row"}],"title":"2. \n   Gaps"}],"url":"https://drafts.csswg.org/css-grid-2/#grid-row"},
-"229cad55": {"dfnID":"229cad55","dfnText":"multicol container","external":true,"refSections":[{"refs":[{"id":"ref-for-multi-column-container"}],"title":"1. \nIntroduction"},{"refs":[{"id":"ref-for-multi-column-container\u2460"},{"id":"ref-for-multi-column-container\u2461"}],"title":"2. \n   Gaps"},{"refs":[{"id":"ref-for-multi-column-container\u2462"}],"title":"3. \nGap decorations"},{"refs":[{"id":"ref-for-multi-column-container\u2463"}],"title":"3.2. \nBreaking gap decorations: The column-rule-break, row-rule-break, and rule-break properties"},{"refs":[{"id":"ref-for-multi-column-container\u2464"},{"id":"ref-for-multi-column-container\u2465"}],"title":"3.4. \nAdjusting gap segment endpoints: The rule-inset properties"},{"refs":[{"id":"ref-for-multi-column-container\u2466"}],"title":"4.1. \nGap decoration color: The column-rule-color and row-rule-color properties"},{"refs":[{"id":"ref-for-multi-column-container\u2467"}],"title":"4.2. \nGap decoration style: The column-rule-style and row-rule-style properties"},{"refs":[{"id":"ref-for-multi-column-container\u2468"}],"title":"4.3. \nGap decoration width: The column-rule-width and row-rule-width properties"}],"url":"https://drafts.csswg.org/css-multicol-2/#multi-column-container"},
-"24285d87": {"dfnID":"24285d87","dfnText":"flex container","external":true,"refSections":[{"refs":[{"id":"ref-for-flex-container"},{"id":"ref-for-flex-container\u2460"},{"id":"ref-for-flex-container\u2461"},{"id":"ref-for-flex-container\u2462"}],"title":"2. \n   Gaps"},{"refs":[{"id":"ref-for-flex-container\u2463"}],"title":"3. \nGap decorations"},{"refs":[{"id":"ref-for-flex-container\u2464"}],"title":"3.2. \nBreaking gap decorations: The column-rule-break, row-rule-break, and rule-break properties"},{"refs":[{"id":"ref-for-flex-container\u2465"},{"id":"ref-for-flex-container\u2466"}],"title":"3.4. \nAdjusting gap segment endpoints: The rule-inset properties"},{"refs":[{"id":"ref-for-flex-container\u2467"}],"title":"3.5. \nGap decoration overlap: The rule-overlap property"},{"refs":[{"id":"ref-for-flex-container\u2468"}],"title":"4.1. \nGap decoration color: The column-rule-color and row-rule-color properties"},{"refs":[{"id":"ref-for-flex-container\u2460\u24ea"}],"title":"4.2. \nGap decoration style: The column-rule-style and row-rule-style properties"},{"refs":[{"id":"ref-for-flex-container\u2460\u2460"}],"title":"4.3. \nGap decoration width: The column-rule-width and row-rule-width properties"}],"url":"https://drafts.csswg.org/css-flexbox-1/#flex-container"},
+"229cad55": {"dfnID":"229cad55","dfnText":"multicol container","external":true,"refSections":[{"refs":[{"id":"ref-for-multi-column-container"}],"title":"1. \nIntroduction"},{"refs":[{"id":"ref-for-multi-column-container\u2460"},{"id":"ref-for-multi-column-container\u2461"}],"title":"2. \n   Gaps"},{"refs":[{"id":"ref-for-multi-column-container\u2462"}],"title":"3.2. \nJoining gap decoration segments: The column-rule-join, row-rule-join, and rule-join properties"},{"refs":[{"id":"ref-for-multi-column-container\u2463"},{"id":"ref-for-multi-column-container\u2464"}],"title":"3.4. \nAdjusting gap segment endpoints: The rule-inset properties"},{"refs":[{"id":"ref-for-multi-column-container\u2465"}],"title":"4.1. \nGap decoration color: The column-rule-color and row-rule-color properties"},{"refs":[{"id":"ref-for-multi-column-container\u2466"}],"title":"4.2. \nGap decoration style: The column-rule-style and row-rule-style properties"},{"refs":[{"id":"ref-for-multi-column-container\u2467"}],"title":"4.3. \nGap decoration width: The column-rule-width and row-rule-width properties"}],"url":"https://drafts.csswg.org/css-multicol-2/#multi-column-container"},
+"24285d87": {"dfnID":"24285d87","dfnText":"flex container","external":true,"refSections":[{"refs":[{"id":"ref-for-flex-container"},{"id":"ref-for-flex-container\u2460"},{"id":"ref-for-flex-container\u2461"},{"id":"ref-for-flex-container\u2462"}],"title":"2. \n   Gaps"},{"refs":[{"id":"ref-for-flex-container\u2463"}],"title":"3.2. \nJoining gap decoration segments: The column-rule-join, row-rule-join, and rule-join properties"},{"refs":[{"id":"ref-for-flex-container\u2464"},{"id":"ref-for-flex-container\u2465"}],"title":"3.4. \nAdjusting gap segment endpoints: The rule-inset properties"},{"refs":[{"id":"ref-for-flex-container\u2466"}],"title":"3.5. \nGap decoration overlap: The rule-overlap property"},{"refs":[{"id":"ref-for-flex-container\u2467"}],"title":"4.1. \nGap decoration color: The column-rule-color and row-rule-color properties"},{"refs":[{"id":"ref-for-flex-container\u2468"}],"title":"4.2. \nGap decoration style: The column-rule-style and row-rule-style properties"},{"refs":[{"id":"ref-for-flex-container\u2460\u24ea"}],"title":"4.3. \nGap decoration width: The column-rule-width and row-rule-width properties"}],"url":"https://drafts.csswg.org/css-flexbox-1/#flex-container"},
 "28437084": {"dfnID":"28437084","dfnText":"multicol line","external":true,"refSections":[{"refs":[{"id":"ref-for-multi-column-line"}],"title":"2. \n   Gaps"}],"url":"https://drafts.csswg.org/css-multicol-2/#multi-column-line"},
 "358fd6ff": {"dfnID":"358fd6ff","dfnText":"CSS-wide keywords","external":true,"refSections":[{"refs":[{"id":"ref-for-css-wide-keywords"}],"title":"1.1. \nValue Definitions"}],"url":"https://drafts.csswg.org/css-values-4/#css-wide-keywords"},
 "378c32c7": {"dfnID":"378c32c7","dfnText":"rule-paint-order","external":true,"refSections":[{"refs":[{"id":"ref-for-propdef-rule-paint-order"}],"title":"8.1. \nChanges since the 17 April 2025 Working Draft"}],"url":"https://www.w3.org/TR/css-gaps-1/#propdef-rule-paint-order"},
 "38b2c978": {"dfnID":"38b2c978","dfnText":"repeatable list","external":true,"refSections":[{"refs":[{"id":"ref-for-repeatable-list"}],"title":"4.4.1. Interpolation behavior"},{"refs":[{"id":"ref-for-repeatable-list\u2460"},{"id":"ref-for-repeatable-list\u2461"},{"id":"ref-for-repeatable-list\u2462"}],"title":"4.4.1.1. Lists with Auto Repeaters"}],"url":"https://drafts.csswg.org/web-animations-1/#repeatable-list"},
-"396d5070": {"dfnID":"396d5070","dfnText":"multi-column container","external":true,"refSections":[{"refs":[{"id":"ref-for-multi-column-container"}],"title":"1. \nIntroduction"},{"refs":[{"id":"ref-for-multi-column-container\u2460"},{"id":"ref-for-multi-column-container\u2461"}],"title":"2. \n   Gaps"},{"refs":[{"id":"ref-for-multi-column-container\u2462"}],"title":"3. \nGap decorations"},{"refs":[{"id":"ref-for-multi-column-container\u2463"}],"title":"3.2. \nBreaking gap decorations: The column-rule-break, row-rule-break, and rule-break properties"},{"refs":[{"id":"ref-for-multi-column-container\u2464"},{"id":"ref-for-multi-column-container\u2465"}],"title":"3.4. \nAdjusting gap segment endpoints: The rule-inset properties"},{"refs":[{"id":"ref-for-multi-column-container\u2466"}],"title":"4.1. \nGap decoration color: The column-rule-color and row-rule-color properties"},{"refs":[{"id":"ref-for-multi-column-container\u2467"}],"title":"4.2. \nGap decoration style: The column-rule-style and row-rule-style properties"},{"refs":[{"id":"ref-for-multi-column-container\u2468"}],"title":"4.3. \nGap decoration width: The column-rule-width and row-rule-width properties"}],"url":"https://drafts.csswg.org/css-multicol-2/#multi-column-container"},
+"396d5070": {"dfnID":"396d5070","dfnText":"multi-column container","external":true,"refSections":[{"refs":[{"id":"ref-for-multi-column-container"}],"title":"1. \nIntroduction"},{"refs":[{"id":"ref-for-multi-column-container\u2460"},{"id":"ref-for-multi-column-container\u2461"}],"title":"2. \n   Gaps"},{"refs":[{"id":"ref-for-multi-column-container\u2462"}],"title":"3.2. \nJoining gap decoration segments: The column-rule-join, row-rule-join, and rule-join properties"},{"refs":[{"id":"ref-for-multi-column-container\u2463"},{"id":"ref-for-multi-column-container\u2464"}],"title":"3.4. \nAdjusting gap segment endpoints: The rule-inset properties"},{"refs":[{"id":"ref-for-multi-column-container\u2465"}],"title":"4.1. \nGap decoration color: The column-rule-color and row-rule-color properties"},{"refs":[{"id":"ref-for-multi-column-container\u2466"}],"title":"4.2. \nGap decoration style: The column-rule-style and row-rule-style properties"},{"refs":[{"id":"ref-for-multi-column-container\u2467"}],"title":"4.3. \nGap decoration width: The column-rule-width and row-rule-width properties"}],"url":"https://drafts.csswg.org/css-multicol-2/#multi-column-container"},
 "49e139ba": {"dfnID":"49e139ba","dfnText":"column-height","external":true,"refSections":[{"refs":[{"id":"ref-for-propdef-column-height"}],"title":"2. \n   Gaps"}],"url":"https://drafts.csswg.org/css-multicol-2/#propdef-column-height"},
 "4a142214": {"dfnID":"4a142214","dfnText":"snap as a border width","external":true,"refSections":[{"refs":[{"id":"ref-for-snap-a-length-as-a-border-width"}],"title":"4.3. \nGap decoration width: The column-rule-width and row-rule-width properties"}],"url":"https://drafts.csswg.org/css-values-4/#snap-a-length-as-a-border-width"},
 "537cf076": {"dfnID":"537cf076","dfnText":"?","external":true,"refSections":[{"refs":[{"id":"ref-for-mult-opt"},{"id":"ref-for-mult-opt\u2460"},{"id":"ref-for-mult-opt\u2461"}],"title":"3.4. \nAdjusting gap segment endpoints: The rule-inset properties"},{"refs":[{"id":"ref-for-mult-opt\u2462"},{"id":"ref-for-mult-opt\u2463"}],"title":"4.5. \nGap decoration shorthands: The column-rule and row-rule properties"}],"url":"https://drafts.csswg.org/css-values-4/#mult-opt"},
+"54029df1": {"dfnID":"54029df1","dfnText":"row-rule-break","external":true,"refSections":[{"refs":[{"id":"ref-for-propdef-row-rule-break"}],"title":"3.2.1. \nDetermining Candidate Gap Segments From Break Rules"}],"url":"https://drafts.csswg.org/css-gaps-1/#propdef-row-rule-break"},
 "55617484": {"dfnID":"55617484","dfnText":"none","external":true,"refSections":[{"refs":[{"id":"ref-for-valdef-line-style-none"}],"title":"8.1. \nChanges since the 17 April 2025 Working Draft"}],"url":"https://drafts.csswg.org/css-backgrounds-3/#valdef-line-style-none"},
 "68150e76": {"dfnID":"68150e76","dfnText":"*","external":true,"refSections":[{"refs":[{"id":"ref-for-mult-zero-plus"},{"id":"ref-for-mult-zero-plus\u2460"}],"title":"4.1. \nGap decoration color: The column-rule-color and row-rule-color properties"},{"refs":[{"id":"ref-for-mult-zero-plus\u2461"},{"id":"ref-for-mult-zero-plus\u2462"}],"title":"4.2. \nGap decoration style: The column-rule-style and row-rule-style properties"},{"refs":[{"id":"ref-for-mult-zero-plus\u2463"},{"id":"ref-for-mult-zero-plus\u2464"}],"title":"4.3. \nGap decoration width: The column-rule-width and row-rule-width properties"}],"url":"https://drafts.csswg.org/css-values-4/#mult-zero-plus"},
 "68487d22": {"dfnID":"68487d22","dfnText":"#","external":true,"refSections":[{"refs":[{"id":"ref-for-mult-comma"},{"id":"ref-for-mult-comma\u2460"},{"id":"ref-for-mult-comma\u2461"},{"id":"ref-for-mult-comma\u2462"},{"id":"ref-for-mult-comma\u2463"}],"title":"4.5. \nGap decoration shorthands: The column-rule and row-rule properties"}],"url":"https://drafts.csswg.org/css-values-4/#mult-comma"},
-"6ec67710": {"dfnID":"6ec67710","dfnText":"|","external":true,"refSections":[{"refs":[{"id":"ref-for-comb-one"},{"id":"ref-for-comb-one\u2460"}],"title":"3.2. \nBreaking gap decorations: The column-rule-break, row-rule-break, and rule-break properties"},{"refs":[{"id":"ref-for-comb-one\u2461"},{"id":"ref-for-comb-one\u2462"}],"title":"3.3. \nPainting Gap Decorations with Visibility Rules"},{"refs":[{"id":"ref-for-comb-one\u2463"},{"id":"ref-for-comb-one\u2464"},{"id":"ref-for-comb-one\u2465"},{"id":"ref-for-comb-one\u2466"}],"title":"3.4. \nAdjusting gap segment endpoints: The rule-inset properties"},{"refs":[{"id":"ref-for-comb-one\u2467"}],"title":"3.5. \nGap decoration overlap: The rule-overlap property"},{"refs":[{"id":"ref-for-comb-one\u2468"},{"id":"ref-for-comb-one\u2460\u24ea"}],"title":"4.1. \nGap decoration color: The column-rule-color and row-rule-color properties"},{"refs":[{"id":"ref-for-comb-one\u2460\u2460"},{"id":"ref-for-comb-one\u2460\u2461"}],"title":"4.2. \nGap decoration style: The column-rule-style and row-rule-style properties"},{"refs":[{"id":"ref-for-comb-one\u2460\u2462"},{"id":"ref-for-comb-one\u2460\u2463"}],"title":"4.3. \nGap decoration width: The column-rule-width and row-rule-width properties"},{"refs":[{"id":"ref-for-comb-one\u2460\u2464"}],"title":"4.4. \nLists of values and the repeat() notation"},{"refs":[{"id":"ref-for-comb-one\u2460\u2465"},{"id":"ref-for-comb-one\u2460\u2466"}],"title":"4.5. \nGap decoration shorthands: The column-rule and row-rule properties"}],"url":"https://drafts.csswg.org/css-values-4/#comb-one"},
+"6c9b2f4e": {"dfnID":"6c9b2f4e","dfnText":"none","external":true,"refSections":[{"refs":[{"id":"ref-for-valdef-column-rule-break-none"},{"id":"ref-for-valdef-column-rule-break-none\u2460"}],"title":"3.2.1. \nDetermining Candidate Gap Segments From Break Rules"}],"url":"https://drafts.csswg.org/css-gaps-1/#valdef-column-rule-break-none"},
+"6ec67710": {"dfnID":"6ec67710","dfnText":"|","external":true,"refSections":[{"refs":[{"id":"ref-for-comb-one"},{"id":"ref-for-comb-one\u2460"}],"title":"3.2. \nJoining gap decoration segments: The column-rule-join, row-rule-join, and rule-join properties"},{"refs":[{"id":"ref-for-comb-one\u2461"},{"id":"ref-for-comb-one\u2462"}],"title":"3.3. \nPainting Gap Decorations with Visibility Rules"},{"refs":[{"id":"ref-for-comb-one\u2463"},{"id":"ref-for-comb-one\u2464"},{"id":"ref-for-comb-one\u2465"},{"id":"ref-for-comb-one\u2466"}],"title":"3.4. \nAdjusting gap segment endpoints: The rule-inset properties"},{"refs":[{"id":"ref-for-comb-one\u2467"}],"title":"3.5. \nGap decoration overlap: The rule-overlap property"},{"refs":[{"id":"ref-for-comb-one\u2468"},{"id":"ref-for-comb-one\u2460\u24ea"}],"title":"4.1. \nGap decoration color: The column-rule-color and row-rule-color properties"},{"refs":[{"id":"ref-for-comb-one\u2460\u2460"},{"id":"ref-for-comb-one\u2460\u2461"}],"title":"4.2. \nGap decoration style: The column-rule-style and row-rule-style properties"},{"refs":[{"id":"ref-for-comb-one\u2460\u2462"},{"id":"ref-for-comb-one\u2460\u2463"}],"title":"4.3. \nGap decoration width: The column-rule-width and row-rule-width properties"},{"refs":[{"id":"ref-for-comb-one\u2460\u2464"}],"title":"4.4. \nLists of values and the repeat() notation"},{"refs":[{"id":"ref-for-comb-one\u2460\u2465"},{"id":"ref-for-comb-one\u2460\u2466"}],"title":"4.5. \nGap decoration shorthands: The column-rule and row-rule properties"}],"url":"https://drafts.csswg.org/css-values-4/#comb-one"},
 "6fad7548": {"dfnID":"6fad7548","dfnText":"row-gap","external":true,"refSections":[{"refs":[{"id":"ref-for-propdef-row-gap"}],"title":"2. \n   Gaps"},{"refs":[{"id":"ref-for-propdef-row-gap\u2460"}],"title":"3.4. \nAdjusting gap segment endpoints: The rule-inset properties"}],"url":"https://drafts.csswg.org/css-align-3/#propdef-row-gap"},
 "70c9f859": {"dfnID":"70c9f859","dfnText":"<integer>","external":true,"refSections":[{"refs":[{"id":"ref-for-integer-value"}],"title":"4.1. \nGap decoration color: The column-rule-color and row-rule-color properties"},{"refs":[{"id":"ref-for-integer-value\u2460"}],"title":"4.2. \nGap decoration style: The column-rule-style and row-rule-style properties"},{"refs":[{"id":"ref-for-integer-value\u2461"}],"title":"4.3. \nGap decoration width: The column-rule-width and row-rule-width properties"},{"refs":[{"id":"ref-for-integer-value\u2462"},{"id":"ref-for-integer-value\u2463"}],"title":"4.4. \nLists of values and the repeat() notation"},{"refs":[{"id":"ref-for-integer-value\u2464"}],"title":"4.5. \nGap decoration shorthands: The column-rule and row-rule properties"}],"url":"https://drafts.csswg.org/css-values-4/#integer-value"},
 "7594868a": {"dfnID":"7594868a","dfnText":"hidden","external":true,"refSections":[{"refs":[{"id":"ref-for-valdef-line-style-hidden"}],"title":"8.1. \nChanges since the 17 April 2025 Working Draft"}],"url":"https://drafts.csswg.org/css-backgrounds-3/#valdef-line-style-hidden"},
-"7e6af1ac": {"dfnID":"7e6af1ac","dfnText":"gutter","external":true,"refSections":[{"refs":[{"id":"ref-for-gutter"},{"id":"ref-for-gutter\u2460"},{"id":"ref-for-gutter\u2461"},{"id":"ref-for-gutter\u2462"},{"id":"ref-for-gutter\u2463"}],"title":"2. \n   Gaps"},{"refs":[{"id":"ref-for-gutter\u2464"}],"title":"3. \nGap decorations"},{"refs":[{"id":"ref-for-gutter\u2465"}],"title":"8.1. \nChanges since the 17 April 2025 Working Draft"}],"url":"https://drafts.csswg.org/css-align-3/#gutter"},
+"7e6af1ac": {"dfnID":"7e6af1ac","dfnText":"gutter","external":true,"refSections":[{"refs":[{"id":"ref-for-gutter"},{"id":"ref-for-gutter\u2460"},{"id":"ref-for-gutter\u2461"},{"id":"ref-for-gutter\u2462"},{"id":"ref-for-gutter\u2463"},{"id":"ref-for-gutter\u2464"}],"title":"2. \n   Gaps"},{"refs":[{"id":"ref-for-gutter\u2465"}],"title":"8.1. \nChanges since the 17 April 2025 Working Draft"}],"url":"https://drafts.csswg.org/css-align-3/#gutter"},
 "8a82fda1": {"dfnID":"8a82fda1","dfnText":"||","external":true,"refSections":[{"refs":[{"id":"ref-for-comb-any"},{"id":"ref-for-comb-any\u2460"}],"title":"4.5. \nGap decoration shorthands: The column-rule and row-rule properties"}],"url":"https://drafts.csswg.org/css-values-4/#comb-any"},
+"92d34c05": {"dfnID":"92d34c05","dfnText":"spanning-item","external":true,"refSections":[{"refs":[{"id":"ref-for-valdef-column-rule-break-spanning-item"}],"title":"3.2.1. \nDetermining Candidate Gap Segments From Break Rules"}],"url":"https://drafts.csswg.org/css-gaps-1/#valdef-column-rule-break-spanning-item"},
 "957ec3c1": {"dfnID":"957ec3c1","dfnText":"<line-style>","external":true,"refSections":[{"refs":[{"id":"ref-for-typedef-line-style"},{"id":"ref-for-typedef-line-style\u2460"},{"id":"ref-for-typedef-line-style\u2461"},{"id":"ref-for-typedef-line-style\u2462"}],"title":"4.2. \nGap decoration style: The column-rule-style and row-rule-style properties"},{"refs":[{"id":"ref-for-typedef-line-style\u2463"}],"title":"4.5. \nGap decoration shorthands: The column-rule and row-rule properties"}],"url":"https://drafts.csswg.org/css-backgrounds-3/#typedef-line-style"},
 "9ddea951": {"dfnID":"9ddea951","dfnText":"px","external":true,"refSections":[{"refs":[{"id":"ref-for-px"}],"title":"3.4. \nAdjusting gap segment endpoints: The rule-inset properties"}],"url":"https://drafts.csswg.org/css-values-4/#px"},
 "9f9120ff": {"dfnID":"9f9120ff","dfnText":",","external":true,"refSections":[{"refs":[{"id":"ref-for-comb-comma"},{"id":"ref-for-comb-comma\u2460"}],"title":"4.1. \nGap decoration color: The column-rule-color and row-rule-color properties"},{"refs":[{"id":"ref-for-comb-comma\u2461"},{"id":"ref-for-comb-comma\u2462"}],"title":"4.2. \nGap decoration style: The column-rule-style and row-rule-style properties"},{"refs":[{"id":"ref-for-comb-comma\u2463"},{"id":"ref-for-comb-comma\u2464"}],"title":"4.3. \nGap decoration width: The column-rule-width and row-rule-width properties"},{"refs":[{"id":"ref-for-comb-comma\u2465"}],"title":"4.4. \nLists of values and the repeat() notation"},{"refs":[{"id":"ref-for-comb-comma\u2466"},{"id":"ref-for-comb-comma\u2467"},{"id":"ref-for-comb-comma\u2468"},{"id":"ref-for-comb-comma\u2460\u24ea"}],"title":"4.5. \nGap decoration shorthands: The column-rule and row-rule properties"}],"url":"https://drafts.csswg.org/css-values-4/#comb-comma"},
+"ae6529c1": {"dfnID":"ae6529c1","dfnText":"intersection","external":true,"refSections":[{"refs":[{"id":"ref-for-valdef-column-rule-break-intersection"}],"title":"3.2.1. \nDetermining Candidate Gap Segments From Break Rules"}],"url":"https://drafts.csswg.org/css-gaps-1/#valdef-column-rule-break-intersection"},
 "apply-visibility-rules-to-the-candidate-segments": {"dfnID":"apply-visibility-rules-to-the-candidate-segments","dfnText":"apply visibility rules to the candidate segments","external":false,"refSections":[],"url":"#apply-visibility-rules-to-the-candidate-segments"},
 "assign-gap-decoration-values": {"dfnID":"assign-gap-decoration-values","dfnText":"assign gap decoration values","external":false,"refSections":[{"refs":[{"id":"ref-for-assign-gap-decoration-values"},{"id":"ref-for-assign-gap-decoration-values\u2460"},{"id":"ref-for-assign-gap-decoration-values\u2461"}],"title":"4.4. Lists of values and the repeat() notation"},{"refs":[{"id":"ref-for-assign-gap-decoration-values\u2462"}],"title":"4.4.1.1. Lists with Auto Repeaters"}],"url":"#assign-gap-decoration-values"},
 "auto-repeater": {"dfnID":"auto-repeater","dfnText":"auto repeater","external":false,"refSections":[{"refs":[{"id":"ref-for-auto-repeater"},{"id":"ref-for-auto-repeater\u2460"},{"id":"ref-for-auto-repeater\u2461"},{"id":"ref-for-auto-repeater\u2462"},{"id":"ref-for-auto-repeater\u2463"},{"id":"ref-for-auto-repeater\u2464"},{"id":"ref-for-auto-repeater\u2465"}],"title":"4.4. Lists of values and the repeat() notation"},{"refs":[{"id":"ref-for-auto-repeater\u2466"},{"id":"ref-for-auto-repeater\u2467"},{"id":"ref-for-auto-repeater\u2468"},{"id":"ref-for-auto-repeater\u2460\u24ea"},{"id":"ref-for-auto-repeater\u2460\u2460"}],"title":"4.4.1.1. Lists with Auto Repeaters"}],"url":"#auto-repeater"},
 "bedd9d42": {"dfnID":"bedd9d42","dfnText":"+","external":true,"refSections":[{"refs":[{"id":"ref-for-mult-one-plus"},{"id":"ref-for-mult-one-plus\u2460"},{"id":"ref-for-mult-one-plus\u2461"}],"title":"4.1. \nGap decoration color: The column-rule-color and row-rule-color properties"},{"refs":[{"id":"ref-for-mult-one-plus\u2462"},{"id":"ref-for-mult-one-plus\u2463"},{"id":"ref-for-mult-one-plus\u2464"}],"title":"4.2. \nGap decoration style: The column-rule-style and row-rule-style properties"},{"refs":[{"id":"ref-for-mult-one-plus\u2465"},{"id":"ref-for-mult-one-plus\u2466"},{"id":"ref-for-mult-one-plus\u2467"}],"title":"4.3. \nGap decoration width: The column-rule-width and row-rule-width properties"},{"refs":[{"id":"ref-for-mult-one-plus\u2468"}],"title":"4.4. \nLists of values and the repeat() notation"}],"url":"https://drafts.csswg.org/css-values-4/#mult-one-plus"},
 "ceaa27cc": {"dfnID":"ceaa27cc","dfnText":"<line-width>","external":true,"refSections":[{"refs":[{"id":"ref-for-typedef-line-width"},{"id":"ref-for-typedef-line-width\u2460"},{"id":"ref-for-typedef-line-width\u2461"}],"title":"4.3. \nGap decoration width: The column-rule-width and row-rule-width properties"},{"refs":[{"id":"ref-for-typedef-line-width\u2462"}],"title":"4.5. \nGap decoration shorthands: The column-rule and row-rule properties"}],"url":"https://drafts.csswg.org/css-backgrounds-3/#typedef-line-width"},
-"column-gap": {"dfnID":"column-gap","dfnText":"column gap","external":false,"refSections":[{"refs":[{"id":"ref-for-column-gap"},{"id":"ref-for-column-gap\u2460"},{"id":"ref-for-column-gap\u2461"}],"title":"2. Gaps"}],"url":"#column-gap"},
+"column-gap": {"dfnID":"column-gap","dfnText":"column gap","external":false,"refSections":[{"refs":[{"id":"ref-for-column-gap"},{"id":"ref-for-column-gap\u2460"},{"id":"ref-for-column-gap\u2461"},{"id":"ref-for-column-gap\u2462"}],"title":"2. Gaps"}],"url":"#column-gap"},
 "compute-the-offset": {"dfnID":"compute-the-offset","dfnText":"compute the offset","external":false,"refSections":[{"refs":[{"id":"ref-for-compute-the-offset"},{"id":"ref-for-compute-the-offset\u2460"}],"title":"3.3.1. Adjusting Endpoints When Appending"}],"url":"#compute-the-offset"},
 "crossing-gap-width": {"dfnID":"crossing-gap-width","dfnText":"crossing gap width","external":false,"refSections":[{"refs":[{"id":"ref-for-crossing-gap-width"},{"id":"ref-for-crossing-gap-width\u2460"},{"id":"ref-for-crossing-gap-width\u2461"},{"id":"ref-for-crossing-gap-width\u2462"},{"id":"ref-for-crossing-gap-width\u2463"},{"id":"ref-for-crossing-gap-width\u2464"}],"title":"3.4. Adjusting gap segment endpoints: The rule-inset properties"}],"url":"#crossing-gap-width"},
 "d3f841bc": {"dfnID":"d3f841bc","dfnText":"cross axis","external":true,"refSections":[{"refs":[{"id":"ref-for-cross-axis"}],"title":"2. \n   Gaps"}],"url":"https://drafts.csswg.org/css-flexbox-1/#cross-axis"},
+"d76a772c": {"dfnID":"d76a772c","dfnText":"column-rule-break","external":true,"refSections":[{"refs":[{"id":"ref-for-propdef-column-rule-break"}],"title":"3.2.1. \nDetermining Candidate Gap Segments From Break Rules"}],"url":"https://drafts.csswg.org/css-gaps-1/#propdef-column-rule-break"},
 "d82f4d31": {"dfnID":"d82f4d31","dfnText":"column box","external":true,"refSections":[{"refs":[{"id":"ref-for-column-box"},{"id":"ref-for-column-box\u2460"}],"title":"2. \n   Gaps"}],"url":"https://drafts.csswg.org/css-multicol-2/#column-box"},
-"determine-candidate-segments": {"dfnID":"determine-candidate-segments","dfnText":"determine candidate segments","external":false,"refSections":[{"refs":[{"id":"ref-for-determine-candidate-segments"}],"title":"3.2. Breaking gap decorations: The column-rule-break, row-rule-break, and rule-break properties"}],"url":"#determine-candidate-segments"},
+"determine-candidate-segments": {"dfnID":"determine-candidate-segments","dfnText":"determine candidate segments","external":false,"refSections":[{"refs":[{"id":"ref-for-determine-candidate-segments"}],"title":"3.2. Joining gap decoration segments: The column-rule-join, row-rule-join, and rule-join properties"}],"url":"#determine-candidate-segments"},
 "determine-the-gap-decoration-segments": {"dfnID":"determine-the-gap-decoration-segments","dfnText":"determine the gap decoration segments","external":false,"refSections":[],"url":"#determine-the-gap-decoration-segments"},
 "discontiguous": {"dfnID":"discontiguous","dfnText":"discontiguous","external":false,"refSections":[{"refs":[{"id":"ref-for-discontiguous"},{"id":"ref-for-discontiguous\u2460"}],"title":"3.2.1. Determining Candidate Gap Segments From Break Rules"}],"url":"#discontiguous"},
 "e3ec4d32": {"dfnID":"e3ec4d32","dfnText":"discrete","external":true,"refSections":[{"refs":[{"id":"ref-for-discrete"},{"id":"ref-for-discrete\u2460"},{"id":"ref-for-discrete\u2461"},{"id":"ref-for-discrete\u2462"},{"id":"ref-for-discrete\u2463"},{"id":"ref-for-discrete\u2464"}],"title":"4.4.1.1. Lists with Auto Repeaters"}],"url":"https://drafts.csswg.org/web-animations-1/#discrete"},
 "e7b3aa1a": {"dfnID":"e7b3aa1a","dfnText":"main axis","external":true,"refSections":[{"refs":[{"id":"ref-for-main-axis"}],"title":"2. \n   Gaps"}],"url":"https://drafts.csswg.org/css-flexbox-1/#main-axis"},
 "edge-segment-endpoint": {"dfnID":"edge-segment-endpoint","dfnText":"edge segment endpoint","external":false,"refSections":[{"refs":[{"id":"ref-for-edge-segment-endpoint"},{"id":"ref-for-edge-segment-endpoint\u2460"},{"id":"ref-for-edge-segment-endpoint\u2461"},{"id":"ref-for-edge-segment-endpoint\u2462"}],"title":"3.4. Adjusting gap segment endpoints: The rule-inset properties"}],"url":"#edge-segment-endpoint"},
 "end-segment-endpoint": {"dfnID":"end-segment-endpoint","dfnText":"end segment endpoint","external":false,"refSections":[{"refs":[{"id":"ref-for-end-segment-endpoint"},{"id":"ref-for-end-segment-endpoint\u2460"},{"id":"ref-for-end-segment-endpoint\u2461"}],"title":"3.1.1. Segment Endpoints"},{"refs":[{"id":"ref-for-end-segment-endpoint\u2462"},{"id":"ref-for-end-segment-endpoint\u2463"},{"id":"ref-for-end-segment-endpoint\u2464"},{"id":"ref-for-end-segment-endpoint\u2465"},{"id":"ref-for-end-segment-endpoint\u2466"},{"id":"ref-for-end-segment-endpoint\u2467"},{"id":"ref-for-end-segment-endpoint\u2468"},{"id":"ref-for-end-segment-endpoint\u2460\u24ea"},{"id":"ref-for-end-segment-endpoint\u2460\u2460"},{"id":"ref-for-end-segment-endpoint\u2460\u2461"}],"title":"3.1.2. Gap decoration segments"},{"refs":[{"id":"ref-for-end-segment-endpoint\u2460\u2462"},{"id":"ref-for-end-segment-endpoint\u2460\u2463"},{"id":"ref-for-end-segment-endpoint\u2460\u2464"},{"id":"ref-for-end-segment-endpoint\u2460\u2465"},{"id":"ref-for-end-segment-endpoint\u2460\u2466"},{"id":"ref-for-end-segment-endpoint\u2460\u2467"}],"title":"3.4. Adjusting gap segment endpoints: The rule-inset properties"}],"url":"#end-segment-endpoint"},
-"f005b2f6": {"dfnID":"f005b2f6","dfnText":"grid container","external":true,"refSections":[{"refs":[{"id":"ref-for-grid-container"},{"id":"ref-for-grid-container\u2460"}],"title":"2. \n   Gaps"},{"refs":[{"id":"ref-for-grid-container\u2461"}],"title":"3. \nGap decorations"},{"refs":[{"id":"ref-for-grid-container\u2462"}],"title":"3.2. \nBreaking gap decorations: The column-rule-break, row-rule-break, and rule-break properties"},{"refs":[{"id":"ref-for-grid-container\u2463"}],"title":"3.3. \nPainting Gap Decorations with Visibility Rules"},{"refs":[{"id":"ref-for-grid-container\u2464"},{"id":"ref-for-grid-container\u2465"}],"title":"3.4. \nAdjusting gap segment endpoints: The rule-inset properties"},{"refs":[{"id":"ref-for-grid-container\u2466"}],"title":"3.5. \nGap decoration overlap: The rule-overlap property"},{"refs":[{"id":"ref-for-grid-container\u2467"}],"title":"4.1. \nGap decoration color: The column-rule-color and row-rule-color properties"},{"refs":[{"id":"ref-for-grid-container\u2468"}],"title":"4.2. \nGap decoration style: The column-rule-style and row-rule-style properties"},{"refs":[{"id":"ref-for-grid-container\u2460\u24ea"}],"title":"4.3. \nGap decoration width: The column-rule-width and row-rule-width properties"}],"url":"https://drafts.csswg.org/css-grid-2/#grid-container"},
+"f005b2f6": {"dfnID":"f005b2f6","dfnText":"grid container","external":true,"refSections":[{"refs":[{"id":"ref-for-grid-container"},{"id":"ref-for-grid-container\u2460"}],"title":"2. \n   Gaps"},{"refs":[{"id":"ref-for-grid-container\u2461"}],"title":"3.2. \nJoining gap decoration segments: The column-rule-join, row-rule-join, and rule-join properties"},{"refs":[{"id":"ref-for-grid-container\u2462"}],"title":"3.3. \nPainting Gap Decorations with Visibility Rules"},{"refs":[{"id":"ref-for-grid-container\u2463"},{"id":"ref-for-grid-container\u2464"}],"title":"3.4. \nAdjusting gap segment endpoints: The rule-inset properties"},{"refs":[{"id":"ref-for-grid-container\u2465"}],"title":"3.5. \nGap decoration overlap: The rule-overlap property"},{"refs":[{"id":"ref-for-grid-container\u2466"}],"title":"4.1. \nGap decoration color: The column-rule-color and row-rule-color properties"},{"refs":[{"id":"ref-for-grid-container\u2467"}],"title":"4.2. \nGap decoration style: The column-rule-style and row-rule-style properties"},{"refs":[{"id":"ref-for-grid-container\u2468"}],"title":"4.3. \nGap decoration width: The column-rule-width and row-rule-width properties"}],"url":"https://drafts.csswg.org/css-grid-2/#grid-container"},
 "flanked-by-spanning-items": {"dfnID":"flanked-by-spanning-items","dfnText":"flanked by spanning items","external":false,"refSections":[{"refs":[{"id":"ref-for-flanked-by-spanning-items"}],"title":"3.2.1. Determining Candidate Gap Segments From Break Rules"}],"url":"#flanked-by-spanning-items"},
 "funcdef-repeat-line-color-repeat": {"dfnID":"funcdef-repeat-line-color-repeat","dfnText":"repeat()","external":false,"refSections":[{"refs":[{"id":"ref-for-funcdef-repeat-line-color-repeat"}],"title":"4.4.1. Interpolation behavior"}],"url":"#funcdef-repeat-line-color-repeat"},
-"gap": {"dfnID":"gap","dfnText":"gap","external":false,"refSections":[{"refs":[{"id":"ref-for-gap"},{"id":"ref-for-gap\u2460"},{"id":"ref-for-gap\u2461"},{"id":"ref-for-gap\u2462"},{"id":"ref-for-gap\u2463"}],"title":"2. Gaps"},{"refs":[{"id":"ref-for-gap\u2464"},{"id":"ref-for-gap\u2465"}],"title":"3.1.2. Gap decoration segments"},{"refs":[{"id":"ref-for-gap\u2466"},{"id":"ref-for-gap\u2467"},{"id":"ref-for-gap\u2468"},{"id":"ref-for-gap\u2460\u24ea"}],"title":"3.2. Breaking gap decorations: The column-rule-break, row-rule-break, and rule-break properties"}],"url":"#gap"},
+"gap": {"dfnID":"gap","dfnText":"gap","external":false,"refSections":[{"refs":[{"id":"ref-for-gap"},{"id":"ref-for-gap\u2460"},{"id":"ref-for-gap\u2461"},{"id":"ref-for-gap\u2462"},{"id":"ref-for-gap\u2463"}],"title":"2. Gaps"},{"refs":[{"id":"ref-for-gap\u2464"}],"title":"3. Gap decorations"},{"refs":[{"id":"ref-for-gap\u2465"},{"id":"ref-for-gap\u2466"}],"title":"3.1.2. Gap decoration segments"},{"refs":[{"id":"ref-for-gap\u2467"},{"id":"ref-for-gap\u2468"},{"id":"ref-for-gap\u2460\u24ea"}],"title":"3.2. Joining gap decoration segments: The column-rule-join, row-rule-join, and rule-join properties"}],"url":"#gap"},
 "gap-decoration": {"dfnID":"gap-decoration","dfnText":"gap decoration","external":false,"refSections":[{"refs":[{"id":"ref-for-gap-decoration"},{"id":"ref-for-gap-decoration\u2460"},{"id":"ref-for-gap-decoration\u2461"},{"id":"ref-for-gap-decoration\u2462"}],"title":"3.1. Layout and painting"},{"refs":[{"id":"ref-for-gap-decoration\u2463"},{"id":"ref-for-gap-decoration\u2464"},{"id":"ref-for-gap-decoration\u2465"},{"id":"ref-for-gap-decoration\u2466"},{"id":"ref-for-gap-decoration\u2467"},{"id":"ref-for-gap-decoration\u2468"},{"id":"ref-for-gap-decoration\u2460\u24ea"}],"title":"3.2.1. Determining Candidate Gap Segments From Break Rules"},{"refs":[{"id":"ref-for-gap-decoration\u2460\u2460"},{"id":"ref-for-gap-decoration\u2460\u2461"},{"id":"ref-for-gap-decoration\u2460\u2462"},{"id":"ref-for-gap-decoration\u2460\u2463"},{"id":"ref-for-gap-decoration\u2460\u2464"},{"id":"ref-for-gap-decoration\u2460\u2465"},{"id":"ref-for-gap-decoration\u2460\u2466"},{"id":"ref-for-gap-decoration\u2460\u2467"},{"id":"ref-for-gap-decoration\u2460\u2468"},{"id":"ref-for-gap-decoration\u2461\u24ea"},{"id":"ref-for-gap-decoration\u2461\u2460"},{"id":"ref-for-gap-decoration\u2461\u2461"},{"id":"ref-for-gap-decoration\u2461\u2462"}],"title":"3.4. Adjusting gap segment endpoints: The rule-inset properties"},{"refs":[{"id":"ref-for-gap-decoration\u2461\u2463"}],"title":"3.5. Gap decoration overlap: The rule-overlap property"},{"refs":[{"id":"ref-for-gap-decoration\u2461\u2464"}],"title":"4.1. Gap decoration color: The column-rule-color and row-rule-color properties"},{"refs":[{"id":"ref-for-gap-decoration\u2461\u2465"}],"title":"4.2. Gap decoration style: The column-rule-style and row-rule-style properties"},{"refs":[{"id":"ref-for-gap-decoration\u2461\u2466"}],"title":"4.3. Gap decoration width: The column-rule-width and row-rule-width properties"},{"refs":[{"id":"ref-for-gap-decoration\u2461\u2467"},{"id":"ref-for-gap-decoration\u2461\u2468"}],"title":"4.4. Lists of values and the repeat() notation"}],"url":"#gap-decoration"},
-"gap-decoration-segment": {"dfnID":"gap-decoration-segment","dfnText":"gap decoration segment","external":false,"refSections":[{"refs":[{"id":"ref-for-gap-decoration-segment"}],"title":"3.1.1. Segment Endpoints"},{"refs":[{"id":"ref-for-gap-decoration-segment\u2460"},{"id":"ref-for-gap-decoration-segment\u2461"},{"id":"ref-for-gap-decoration-segment\u2462"},{"id":"ref-for-gap-decoration-segment\u2463"},{"id":"ref-for-gap-decoration-segment\u2464"},{"id":"ref-for-gap-decoration-segment\u2465"},{"id":"ref-for-gap-decoration-segment\u2466"},{"id":"ref-for-gap-decoration-segment\u2467"},{"id":"ref-for-gap-decoration-segment\u2468"},{"id":"ref-for-gap-decoration-segment\u2460\u24ea"},{"id":"ref-for-gap-decoration-segment\u2460\u2460"}],"title":"3.1.2. Gap decoration segments"},{"refs":[{"id":"ref-for-gap-decoration-segment\u2460\u2461"},{"id":"ref-for-gap-decoration-segment\u2460\u2462"},{"id":"ref-for-gap-decoration-segment\u2460\u2463"},{"id":"ref-for-gap-decoration-segment\u2460\u2464"},{"id":"ref-for-gap-decoration-segment\u2460\u2465"},{"id":"ref-for-gap-decoration-segment\u2460\u2466"},{"id":"ref-for-gap-decoration-segment\u2460\u2467"}],"title":"3.2. Breaking gap decorations: The column-rule-break, row-rule-break, and rule-break properties"},{"refs":[{"id":"ref-for-gap-decoration-segment\u2460\u2468"}],"title":"3.2.1. Determining Candidate Gap Segments From Break Rules"},{"refs":[{"id":"ref-for-gap-decoration-segment\u2461\u24ea"}],"title":"3.4. Adjusting gap segment endpoints: The rule-inset properties"}],"url":"#gap-decoration-segment"},
+"gap-decoration-segment": {"dfnID":"gap-decoration-segment","dfnText":"gap decoration segment","external":false,"refSections":[{"refs":[{"id":"ref-for-gap-decoration-segment"}],"title":"3.1.1. Segment Endpoints"},{"refs":[{"id":"ref-for-gap-decoration-segment\u2460"},{"id":"ref-for-gap-decoration-segment\u2461"},{"id":"ref-for-gap-decoration-segment\u2462"},{"id":"ref-for-gap-decoration-segment\u2463"},{"id":"ref-for-gap-decoration-segment\u2464"},{"id":"ref-for-gap-decoration-segment\u2465"},{"id":"ref-for-gap-decoration-segment\u2466"},{"id":"ref-for-gap-decoration-segment\u2467"},{"id":"ref-for-gap-decoration-segment\u2468"},{"id":"ref-for-gap-decoration-segment\u2460\u24ea"},{"id":"ref-for-gap-decoration-segment\u2460\u2460"}],"title":"3.1.2. Gap decoration segments"},{"refs":[{"id":"ref-for-gap-decoration-segment\u2460\u2461"},{"id":"ref-for-gap-decoration-segment\u2460\u2462"},{"id":"ref-for-gap-decoration-segment\u2460\u2463"},{"id":"ref-for-gap-decoration-segment\u2460\u2464"},{"id":"ref-for-gap-decoration-segment\u2460\u2465"},{"id":"ref-for-gap-decoration-segment\u2460\u2466"},{"id":"ref-for-gap-decoration-segment\u2460\u2467"},{"id":"ref-for-gap-decoration-segment\u2460\u2468"}],"title":"3.2. Joining gap decoration segments: The column-rule-join, row-rule-join, and rule-join properties"},{"refs":[{"id":"ref-for-gap-decoration-segment\u2461\u24ea"}],"title":"3.2.1. Determining Candidate Gap Segments From Break Rules"},{"refs":[{"id":"ref-for-gap-decoration-segment\u2461\u2460"}],"title":"3.4. Adjusting gap segment endpoints: The rule-inset properties"}],"url":"#gap-decoration-segment"},
 "integer-repeater": {"dfnID":"integer-repeater","dfnText":"integer repeater","external":false,"refSections":[{"refs":[{"id":"ref-for-integer-repeater"},{"id":"ref-for-integer-repeater\u2460"}],"title":"4.4. Lists of values and the repeat() notation"},{"refs":[{"id":"ref-for-integer-repeater\u2461"}],"title":"4.4.1. Interpolation behavior"}],"url":"#integer-repeater"},
 "interior-segment-endpoint": {"dfnID":"interior-segment-endpoint","dfnText":"interior segment endpoint","external":false,"refSections":[{"refs":[{"id":"ref-for-interior-segment-endpoint"},{"id":"ref-for-interior-segment-endpoint\u2460"},{"id":"ref-for-interior-segment-endpoint\u2461"}],"title":"3.4. Adjusting gap segment endpoints: The rule-inset properties"}],"url":"#interior-segment-endpoint"},
 "negative-gap-decoration-segment": {"dfnID":"negative-gap-decoration-segment","dfnText":"negative gap decoration segment","external":false,"refSections":[{"refs":[{"id":"ref-for-negative-gap-decoration-segment"},{"id":"ref-for-negative-gap-decoration-segment\u2460"},{"id":"ref-for-negative-gap-decoration-segment\u2461"},{"id":"ref-for-negative-gap-decoration-segment\u2462"}],"title":"3.1.2. Gap decoration segments"}],"url":"#negative-gap-decoration-segment"},
 "propdef-column-rule": {"dfnID":"propdef-column-rule","dfnText":"column-rule","external":false,"refSections":[{"refs":[{"id":"ref-for-propdef-column-rule"}],"title":"4.5. Gap decoration shorthands: The column-rule and row-rule properties"},{"refs":[{"id":"ref-for-propdef-column-rule\u2460"},{"id":"ref-for-propdef-column-rule\u2461"}],"title":"4.6. Bi-directional gap decoration shorthands: The rule-color, rule-style, rule-width, and rule properties"}],"url":"#propdef-column-rule"},
-"propdef-column-rule-break": {"dfnID":"propdef-column-rule-break","dfnText":"column-rule-break","external":false,"refSections":[{"refs":[{"id":"ref-for-propdef-column-rule-break"},{"id":"ref-for-propdef-column-rule-break\u2460"},{"id":"ref-for-propdef-column-rule-break\u2461"},{"id":"ref-for-propdef-column-rule-break\u2462"}],"title":"3.2. Breaking gap decorations: The column-rule-break, row-rule-break, and rule-break properties"},{"refs":[{"id":"ref-for-propdef-column-rule-break\u2463"}],"title":"3.2.1. Determining Candidate Gap Segments From Break Rules"}],"url":"#propdef-column-rule-break"},
 "propdef-column-rule-color": {"dfnID":"propdef-column-rule-color","dfnText":"column-rule-color","external":false,"refSections":[{"refs":[{"id":"ref-for-propdef-column-rule-color"}],"title":"1. Introduction"},{"refs":[{"id":"ref-for-propdef-column-rule-color\u2460"}],"title":"4.1. Gap decoration color: The column-rule-color and row-rule-color properties"},{"refs":[{"id":"ref-for-propdef-column-rule-color\u2461"},{"id":"ref-for-propdef-column-rule-color\u2462"}],"title":"4.6. Bi-directional gap decoration shorthands: The rule-color, rule-style, rule-width, and rule properties"}],"url":"#propdef-column-rule-color"},
 "propdef-column-rule-edge-inset": {"dfnID":"propdef-column-rule-edge-inset","dfnText":"column-rule-edge-inset","external":false,"refSections":[{"refs":[{"id":"ref-for-propdef-column-rule-edge-inset"},{"id":"ref-for-propdef-column-rule-edge-inset\u2460"},{"id":"ref-for-propdef-column-rule-edge-inset\u2461"},{"id":"ref-for-propdef-column-rule-edge-inset\u2462"}],"title":"3.4. Adjusting gap segment endpoints: The rule-inset properties"}],"url":"#propdef-column-rule-edge-inset"},
 "propdef-column-rule-edge-inset-end": {"dfnID":"propdef-column-rule-edge-inset-end","dfnText":"column-rule-edge-inset-end","external":false,"refSections":[{"refs":[{"id":"ref-for-propdef-column-rule-edge-inset-end"},{"id":"ref-for-propdef-column-rule-edge-inset-end\u2460"}],"title":"3.4. Adjusting gap segment endpoints: The rule-inset properties"}],"url":"#propdef-column-rule-edge-inset-end"},
@@ -4494,11 +4500,11 @@ let dfnPanelData = {
 "propdef-column-rule-interior-inset": {"dfnID":"propdef-column-rule-interior-inset","dfnText":"column-rule-interior-inset","external":false,"refSections":[{"refs":[{"id":"ref-for-propdef-column-rule-interior-inset"},{"id":"ref-for-propdef-column-rule-interior-inset\u2460"},{"id":"ref-for-propdef-column-rule-interior-inset\u2461"},{"id":"ref-for-propdef-column-rule-interior-inset\u2462"}],"title":"3.4. Adjusting gap segment endpoints: The rule-inset properties"}],"url":"#propdef-column-rule-interior-inset"},
 "propdef-column-rule-interior-inset-end": {"dfnID":"propdef-column-rule-interior-inset-end","dfnText":"column-rule-interior-inset-end","external":false,"refSections":[{"refs":[{"id":"ref-for-propdef-column-rule-interior-inset-end"},{"id":"ref-for-propdef-column-rule-interior-inset-end\u2460"}],"title":"3.4. Adjusting gap segment endpoints: The rule-inset properties"}],"url":"#propdef-column-rule-interior-inset-end"},
 "propdef-column-rule-interior-inset-start": {"dfnID":"propdef-column-rule-interior-inset-start","dfnText":"column-rule-interior-inset-start","external":false,"refSections":[{"refs":[{"id":"ref-for-propdef-column-rule-interior-inset-start"},{"id":"ref-for-propdef-column-rule-interior-inset-start\u2460"},{"id":"ref-for-propdef-column-rule-interior-inset-start\u2461"},{"id":"ref-for-propdef-column-rule-interior-inset-start\u2462"}],"title":"3.4. Adjusting gap segment endpoints: The rule-inset properties"}],"url":"#propdef-column-rule-interior-inset-start"},
+"propdef-column-rule-join": {"dfnID":"propdef-column-rule-join","dfnText":"column-rule-join","external":false,"refSections":[{"refs":[{"id":"ref-for-propdef-column-rule-join"},{"id":"ref-for-propdef-column-rule-join\u2460"},{"id":"ref-for-propdef-column-rule-join\u2461"},{"id":"ref-for-propdef-column-rule-join\u2462"}],"title":"3.2. Joining gap decoration segments: The column-rule-join, row-rule-join, and rule-join properties"}],"url":"#propdef-column-rule-join"},
 "propdef-column-rule-style": {"dfnID":"propdef-column-rule-style","dfnText":"column-rule-style","external":false,"refSections":[{"refs":[{"id":"ref-for-propdef-column-rule-style"}],"title":"1. Introduction"},{"refs":[{"id":"ref-for-propdef-column-rule-style\u2460"}],"title":"4.2. Gap decoration style: The column-rule-style and row-rule-style properties"},{"refs":[{"id":"ref-for-propdef-column-rule-style\u2461"},{"id":"ref-for-propdef-column-rule-style\u2462"}],"title":"4.6. Bi-directional gap decoration shorthands: The rule-color, rule-style, rule-width, and rule properties"},{"refs":[{"id":"ref-for-propdef-column-rule-style\u2463"}],"title":"8.1. Changes since the 17 April 2025 Working Draft"}],"url":"#propdef-column-rule-style"},
 "propdef-column-rule-visibility-items": {"dfnID":"propdef-column-rule-visibility-items","dfnText":"column-rule-visibility-items","external":false,"refSections":[{"refs":[{"id":"ref-for-propdef-column-rule-visibility-items"},{"id":"ref-for-propdef-column-rule-visibility-items\u2460"},{"id":"ref-for-propdef-column-rule-visibility-items\u2461"},{"id":"ref-for-propdef-column-rule-visibility-items\u2462"}],"title":"3.3. Painting Gap Decorations with Visibility Rules"}],"url":"#propdef-column-rule-visibility-items"},
 "propdef-column-rule-width": {"dfnID":"propdef-column-rule-width","dfnText":"column-rule-width","external":false,"refSections":[{"refs":[{"id":"ref-for-propdef-column-rule-width"}],"title":"1. Introduction"},{"refs":[{"id":"ref-for-propdef-column-rule-width\u2460"}],"title":"4.3. Gap decoration width: The column-rule-width and row-rule-width properties"},{"refs":[{"id":"ref-for-propdef-column-rule-width\u2461"},{"id":"ref-for-propdef-column-rule-width\u2462"}],"title":"4.6. Bi-directional gap decoration shorthands: The rule-color, rule-style, rule-width, and rule properties"},{"refs":[{"id":"ref-for-propdef-column-rule-width\u2463"}],"title":"8.1. Changes since the 17 April 2025 Working Draft"}],"url":"#propdef-column-rule-width"},
 "propdef-row-rule": {"dfnID":"propdef-row-rule","dfnText":"row-rule","external":false,"refSections":[{"refs":[{"id":"ref-for-propdef-row-rule"}],"title":"4.5. Gap decoration shorthands: The column-rule and row-rule properties"},{"refs":[{"id":"ref-for-propdef-row-rule\u2460"}],"title":"4.6. Bi-directional gap decoration shorthands: The rule-color, rule-style, rule-width, and rule properties"}],"url":"#propdef-row-rule"},
-"propdef-row-rule-break": {"dfnID":"propdef-row-rule-break","dfnText":"row-rule-break","external":false,"refSections":[{"refs":[{"id":"ref-for-propdef-row-rule-break"},{"id":"ref-for-propdef-row-rule-break\u2460"},{"id":"ref-for-propdef-row-rule-break\u2461"}],"title":"3.2. Breaking gap decorations: The column-rule-break, row-rule-break, and rule-break properties"},{"refs":[{"id":"ref-for-propdef-row-rule-break\u2462"}],"title":"3.2.1. Determining Candidate Gap Segments From Break Rules"}],"url":"#propdef-row-rule-break"},
 "propdef-row-rule-color": {"dfnID":"propdef-row-rule-color","dfnText":"row-rule-color","external":false,"refSections":[{"refs":[{"id":"ref-for-propdef-row-rule-color"}],"title":"4.1. Gap decoration color: The column-rule-color and row-rule-color properties"},{"refs":[{"id":"ref-for-propdef-row-rule-color\u2460"}],"title":"4.6. Bi-directional gap decoration shorthands: The rule-color, rule-style, rule-width, and rule properties"}],"url":"#propdef-row-rule-color"},
 "propdef-row-rule-edge-inset": {"dfnID":"propdef-row-rule-edge-inset","dfnText":"row-rule-edge-inset","external":false,"refSections":[{"refs":[{"id":"ref-for-propdef-row-rule-edge-inset"},{"id":"ref-for-propdef-row-rule-edge-inset\u2460"},{"id":"ref-for-propdef-row-rule-edge-inset\u2461"}],"title":"3.4. Adjusting gap segment endpoints: The rule-inset properties"}],"url":"#propdef-row-rule-edge-inset"},
 "propdef-row-rule-edge-inset-end": {"dfnID":"propdef-row-rule-edge-inset-end","dfnText":"row-rule-edge-inset-end","external":false,"refSections":[{"refs":[{"id":"ref-for-propdef-row-rule-edge-inset-end"},{"id":"ref-for-propdef-row-rule-edge-inset-end\u2460"},{"id":"ref-for-propdef-row-rule-edge-inset-end\u2461"},{"id":"ref-for-propdef-row-rule-edge-inset-end\u2462"}],"title":"3.4. Adjusting gap segment endpoints: The rule-inset properties"}],"url":"#propdef-row-rule-edge-inset-end"},
@@ -4509,17 +4515,18 @@ let dfnPanelData = {
 "propdef-row-rule-interior-inset": {"dfnID":"propdef-row-rule-interior-inset","dfnText":"row-rule-interior-inset","external":false,"refSections":[{"refs":[{"id":"ref-for-propdef-row-rule-interior-inset"},{"id":"ref-for-propdef-row-rule-interior-inset\u2460"},{"id":"ref-for-propdef-row-rule-interior-inset\u2461"}],"title":"3.4. Adjusting gap segment endpoints: The rule-inset properties"}],"url":"#propdef-row-rule-interior-inset"},
 "propdef-row-rule-interior-inset-end": {"dfnID":"propdef-row-rule-interior-inset-end","dfnText":"row-rule-interior-inset-end","external":false,"refSections":[{"refs":[{"id":"ref-for-propdef-row-rule-interior-inset-end"},{"id":"ref-for-propdef-row-rule-interior-inset-end\u2460"},{"id":"ref-for-propdef-row-rule-interior-inset-end\u2461"},{"id":"ref-for-propdef-row-rule-interior-inset-end\u2462"}],"title":"3.4. Adjusting gap segment endpoints: The rule-inset properties"}],"url":"#propdef-row-rule-interior-inset-end"},
 "propdef-row-rule-interior-inset-start": {"dfnID":"propdef-row-rule-interior-inset-start","dfnText":"row-rule-interior-inset-start","external":false,"refSections":[{"refs":[{"id":"ref-for-propdef-row-rule-interior-inset-start"},{"id":"ref-for-propdef-row-rule-interior-inset-start\u2460"}],"title":"3.4. Adjusting gap segment endpoints: The rule-inset properties"}],"url":"#propdef-row-rule-interior-inset-start"},
+"propdef-row-rule-join": {"dfnID":"propdef-row-rule-join","dfnText":"row-rule-join","external":false,"refSections":[{"refs":[{"id":"ref-for-propdef-row-rule-join"},{"id":"ref-for-propdef-row-rule-join\u2460"},{"id":"ref-for-propdef-row-rule-join\u2461"}],"title":"3.2. Joining gap decoration segments: The column-rule-join, row-rule-join, and rule-join properties"}],"url":"#propdef-row-rule-join"},
 "propdef-row-rule-style": {"dfnID":"propdef-row-rule-style","dfnText":"row-rule-style","external":false,"refSections":[{"refs":[{"id":"ref-for-propdef-row-rule-style"}],"title":"4.2. Gap decoration style: The column-rule-style and row-rule-style properties"},{"refs":[{"id":"ref-for-propdef-row-rule-style\u2460"}],"title":"4.6. Bi-directional gap decoration shorthands: The rule-color, rule-style, rule-width, and rule properties"}],"url":"#propdef-row-rule-style"},
 "propdef-row-rule-visibility-items": {"dfnID":"propdef-row-rule-visibility-items","dfnText":"row-rule-visibility-items","external":false,"refSections":[{"refs":[{"id":"ref-for-propdef-row-rule-visibility-items"},{"id":"ref-for-propdef-row-rule-visibility-items\u2460"},{"id":"ref-for-propdef-row-rule-visibility-items\u2461"}],"title":"3.3. Painting Gap Decorations with Visibility Rules"}],"url":"#propdef-row-rule-visibility-items"},
 "propdef-row-rule-width": {"dfnID":"propdef-row-rule-width","dfnText":"row-rule-width","external":false,"refSections":[{"refs":[{"id":"ref-for-propdef-row-rule-width"}],"title":"4.3. Gap decoration width: The column-rule-width and row-rule-width properties"},{"refs":[{"id":"ref-for-propdef-row-rule-width\u2460"}],"title":"4.6. Bi-directional gap decoration shorthands: The rule-color, rule-style, rule-width, and rule properties"}],"url":"#propdef-row-rule-width"},
 "propdef-rule": {"dfnID":"propdef-rule","dfnText":"rule","external":false,"refSections":[{"refs":[{"id":"ref-for-propdef-rule"}],"title":"4.6. Bi-directional gap decoration shorthands: The rule-color, rule-style, rule-width, and rule properties"}],"url":"#propdef-rule"},
-"propdef-rule-break": {"dfnID":"propdef-rule-break","dfnText":"rule-break","external":false,"refSections":[{"refs":[{"id":"ref-for-propdef-rule-break"}],"title":"3.2. Breaking gap decorations: The column-rule-break, row-rule-break, and rule-break properties"}],"url":"#propdef-rule-break"},
 "propdef-rule-color": {"dfnID":"propdef-rule-color","dfnText":"rule-color","external":false,"refSections":[{"refs":[{"id":"ref-for-propdef-rule-color"}],"title":"4.4.1. Interpolation behavior"},{"refs":[{"id":"ref-for-propdef-rule-color\u2460"}],"title":"4.6. Bi-directional gap decoration shorthands: The rule-color, rule-style, rule-width, and rule properties"}],"url":"#propdef-rule-color"},
 "propdef-rule-edge-inset": {"dfnID":"propdef-rule-edge-inset","dfnText":"rule-edge-inset","external":false,"refSections":[],"url":"#propdef-rule-edge-inset"},
 "propdef-rule-inset": {"dfnID":"propdef-rule-inset","dfnText":"rule-inset","external":false,"refSections":[{"refs":[{"id":"ref-for-propdef-rule-inset"}],"title":"3.4. Adjusting gap segment endpoints: The rule-inset properties"}],"url":"#propdef-rule-inset"},
 "propdef-rule-inset-end": {"dfnID":"propdef-rule-inset-end","dfnText":"rule-inset-end","external":false,"refSections":[],"url":"#propdef-rule-inset-end"},
 "propdef-rule-inset-start": {"dfnID":"propdef-rule-inset-start","dfnText":"rule-inset-start","external":false,"refSections":[],"url":"#propdef-rule-inset-start"},
 "propdef-rule-interior-inset": {"dfnID":"propdef-rule-interior-inset","dfnText":"rule-interior-inset","external":false,"refSections":[],"url":"#propdef-rule-interior-inset"},
+"propdef-rule-join": {"dfnID":"propdef-rule-join","dfnText":"rule-join","external":false,"refSections":[{"refs":[{"id":"ref-for-propdef-rule-join"}],"title":"3.2. Joining gap decoration segments: The column-rule-join, row-rule-join, and rule-join properties"}],"url":"#propdef-rule-join"},
 "propdef-rule-overlap": {"dfnID":"propdef-rule-overlap","dfnText":"rule-overlap","external":false,"refSections":[{"refs":[{"id":"ref-for-propdef-rule-overlap"},{"id":"ref-for-propdef-rule-overlap\u2460"}],"title":"3.5. Gap decoration overlap: The rule-overlap property"},{"refs":[{"id":"ref-for-propdef-rule-overlap\u2461"}],"title":"8.1. Changes since the 17 April 2025 Working Draft"}],"url":"#propdef-rule-overlap"},
 "propdef-rule-style": {"dfnID":"propdef-rule-style","dfnText":"rule-style","external":false,"refSections":[{"refs":[{"id":"ref-for-propdef-rule-style"}],"title":"4.6. Bi-directional gap decoration shorthands: The rule-color, rule-style, rule-width, and rule properties"}],"url":"#propdef-rule-style"},
 "propdef-rule-visibility-items": {"dfnID":"propdef-rule-visibility-items","dfnText":"rule-visibility-items","external":false,"refSections":[],"url":"#propdef-rule-visibility-items"},
@@ -4549,10 +4556,10 @@ let dfnPanelData = {
 "typedef-repeat-line-style": {"dfnID":"typedef-repeat-line-style","dfnText":"<repeat-line-style>","external":false,"refSections":[{"refs":[{"id":"ref-for-typedef-repeat-line-style"}],"title":"4.2. Gap decoration style: The column-rule-style and row-rule-style properties"}],"url":"#typedef-repeat-line-style"},
 "typedef-repeat-line-width": {"dfnID":"typedef-repeat-line-width","dfnText":"<repeat-line-width>","external":false,"refSections":[{"refs":[{"id":"ref-for-typedef-repeat-line-width"}],"title":"4.3. Gap decoration width: The column-rule-width and row-rule-width properties"}],"url":"#typedef-repeat-line-width"},
 "union": {"dfnID":"union","dfnText":"UNION","external":false,"refSections":[{"refs":[{"id":"ref-for-union"},{"id":"ref-for-union\u2460"},{"id":"ref-for-union\u2461"},{"id":"ref-for-union\u2462"}],"title":"3.2.1. Determining Candidate Gap Segments From Break Rules"},{"refs":[{"id":"ref-for-union\u2463"}],"title":"3.3. Painting Gap Decorations with Visibility Rules"}],"url":"#union"},
-"valdef-column-rule-break-intersection": {"dfnID":"valdef-column-rule-break-intersection","dfnText":"intersection","external":false,"refSections":[{"refs":[{"id":"ref-for-valdef-column-rule-break-intersection"}],"title":"3.2. Breaking gap decorations: The column-rule-break, row-rule-break, and rule-break properties"},{"refs":[{"id":"ref-for-valdef-column-rule-break-intersection\u2460"}],"title":"3.2.1. Determining Candidate Gap Segments From Break Rules"}],"url":"#valdef-column-rule-break-intersection"},
-"valdef-column-rule-break-none": {"dfnID":"valdef-column-rule-break-none","dfnText":"none","external":false,"refSections":[{"refs":[{"id":"ref-for-valdef-column-rule-break-none"}],"title":"3.2. Breaking gap decorations: The column-rule-break, row-rule-break, and rule-break properties"},{"refs":[{"id":"ref-for-valdef-column-rule-break-none\u2460"},{"id":"ref-for-valdef-column-rule-break-none\u2461"}],"title":"3.2.1. Determining Candidate Gap Segments From Break Rules"}],"url":"#valdef-column-rule-break-none"},
-"valdef-column-rule-break-spanning-item": {"dfnID":"valdef-column-rule-break-spanning-item","dfnText":"spanning-item","external":false,"refSections":[{"refs":[{"id":"ref-for-valdef-column-rule-break-spanning-item"},{"id":"ref-for-valdef-column-rule-break-spanning-item\u2460"}],"title":"3.2. Breaking gap decorations: The column-rule-break, row-rule-break, and rule-break properties"},{"refs":[{"id":"ref-for-valdef-column-rule-break-spanning-item\u2461"}],"title":"3.2.1. Determining Candidate Gap Segments From Break Rules"}],"url":"#valdef-column-rule-break-spanning-item"},
 "valdef-column-rule-color-color": {"dfnID":"valdef-column-rule-color-color","dfnText":"<color>","external":false,"refSections":[],"url":"#valdef-column-rule-color-color"},
+"valdef-column-rule-join-all": {"dfnID":"valdef-column-rule-join-all","dfnText":"all","external":false,"refSections":[{"refs":[{"id":"ref-for-valdef-column-rule-join-all"}],"title":"3.2. Joining gap decoration segments: The column-rule-join, row-rule-join, and rule-join properties"}],"url":"#valdef-column-rule-join-all"},
+"valdef-column-rule-join-none": {"dfnID":"valdef-column-rule-join-none","dfnText":"none","external":false,"refSections":[{"refs":[{"id":"ref-for-valdef-column-rule-join-none"}],"title":"3.2. Joining gap decoration segments: The column-rule-join, row-rule-join, and rule-join properties"}],"url":"#valdef-column-rule-join-none"},
+"valdef-column-rule-join-spanning-item": {"dfnID":"valdef-column-rule-join-spanning-item","dfnText":"spanning-item","external":false,"refSections":[{"refs":[{"id":"ref-for-valdef-column-rule-join-spanning-item"},{"id":"ref-for-valdef-column-rule-join-spanning-item\u2460"}],"title":"3.2. Joining gap decoration segments: The column-rule-join, row-rule-join, and rule-join properties"}],"url":"#valdef-column-rule-join-spanning-item"},
 "valdef-column-rule-visibility-items-all": {"dfnID":"valdef-column-rule-visibility-items-all","dfnText":"all","external":false,"refSections":[{"refs":[{"id":"ref-for-valdef-column-rule-visibility-items-all"}],"title":"3.2.1. Determining Candidate Gap Segments From Break Rules"},{"refs":[{"id":"ref-for-valdef-column-rule-visibility-items-all\u2460"}],"title":"3.3. Painting Gap Decorations with Visibility Rules"}],"url":"#valdef-column-rule-visibility-items-all"},
 "valdef-column-rule-visibility-items-around": {"dfnID":"valdef-column-rule-visibility-items-around","dfnText":"around","external":false,"refSections":[{"refs":[{"id":"ref-for-valdef-column-rule-visibility-items-around"}],"title":"3.3. Painting Gap Decorations with Visibility Rules"}],"url":"#valdef-column-rule-visibility-items-around"},
 "valdef-column-rule-visibility-items-between": {"dfnID":"valdef-column-rule-visibility-items-between","dfnText":"between","external":false,"refSections":[{"refs":[{"id":"ref-for-valdef-column-rule-visibility-items-between"}],"title":"3.3. Painting Gap Decorations with Visibility Rules"}],"url":"#valdef-column-rule-visibility-items-between"},
@@ -4989,7 +4996,6 @@ let refsData = {
 "#interior-segment-endpoint": {"displayText":"interior segment endpoint","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"interior segment endpoint","type":"dfn","url":"#interior-segment-endpoint"},
 "#negative-gap-decoration-segment": {"displayText":"negative gap decoration segment","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"negative gap decoration segment","type":"dfn","url":"#negative-gap-decoration-segment"},
 "#propdef-column-rule": {"displayText":"column-rule","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"column-rule","type":"property","url":"#propdef-column-rule"},
-"#propdef-column-rule-break": {"displayText":"column-rule-break","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"column-rule-break","type":"property","url":"#propdef-column-rule-break"},
 "#propdef-column-rule-color": {"displayText":"column-rule-color","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"column-rule-color","type":"property","url":"#propdef-column-rule-color"},
 "#propdef-column-rule-edge-inset": {"displayText":"column-rule-edge-inset","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"column-rule-edge-inset","type":"property","url":"#propdef-column-rule-edge-inset"},
 "#propdef-column-rule-edge-inset-end": {"displayText":"column-rule-edge-inset-end","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"column-rule-edge-inset-end","type":"property","url":"#propdef-column-rule-edge-inset-end"},
@@ -5000,11 +5006,11 @@ let refsData = {
 "#propdef-column-rule-interior-inset": {"displayText":"column-rule-interior-inset","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"column-rule-interior-inset","type":"property","url":"#propdef-column-rule-interior-inset"},
 "#propdef-column-rule-interior-inset-end": {"displayText":"column-rule-interior-inset-end","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"column-rule-interior-inset-end","type":"property","url":"#propdef-column-rule-interior-inset-end"},
 "#propdef-column-rule-interior-inset-start": {"displayText":"column-rule-interior-inset-start","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"column-rule-interior-inset-start","type":"property","url":"#propdef-column-rule-interior-inset-start"},
+"#propdef-column-rule-join": {"displayText":"column-rule-join","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"column-rule-join","type":"property","url":"#propdef-column-rule-join"},
 "#propdef-column-rule-style": {"displayText":"column-rule-style","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"column-rule-style","type":"property","url":"#propdef-column-rule-style"},
 "#propdef-column-rule-visibility-items": {"displayText":"column-rule-visibility-items","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"column-rule-visibility-items","type":"property","url":"#propdef-column-rule-visibility-items"},
 "#propdef-column-rule-width": {"displayText":"column-rule-width","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"column-rule-width","type":"property","url":"#propdef-column-rule-width"},
 "#propdef-row-rule": {"displayText":"row-rule","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"row-rule","type":"property","url":"#propdef-row-rule"},
-"#propdef-row-rule-break": {"displayText":"row-rule-break","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"row-rule-break","type":"property","url":"#propdef-row-rule-break"},
 "#propdef-row-rule-color": {"displayText":"row-rule-color","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"row-rule-color","type":"property","url":"#propdef-row-rule-color"},
 "#propdef-row-rule-edge-inset": {"displayText":"row-rule-edge-inset","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"row-rule-edge-inset","type":"property","url":"#propdef-row-rule-edge-inset"},
 "#propdef-row-rule-edge-inset-end": {"displayText":"row-rule-edge-inset-end","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"row-rule-edge-inset-end","type":"property","url":"#propdef-row-rule-edge-inset-end"},
@@ -5015,17 +5021,18 @@ let refsData = {
 "#propdef-row-rule-interior-inset": {"displayText":"row-rule-interior-inset","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"row-rule-interior-inset","type":"property","url":"#propdef-row-rule-interior-inset"},
 "#propdef-row-rule-interior-inset-end": {"displayText":"row-rule-interior-inset-end","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"row-rule-interior-inset-end","type":"property","url":"#propdef-row-rule-interior-inset-end"},
 "#propdef-row-rule-interior-inset-start": {"displayText":"row-rule-interior-inset-start","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"row-rule-interior-inset-start","type":"property","url":"#propdef-row-rule-interior-inset-start"},
+"#propdef-row-rule-join": {"displayText":"row-rule-join","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"row-rule-join","type":"property","url":"#propdef-row-rule-join"},
 "#propdef-row-rule-style": {"displayText":"row-rule-style","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"row-rule-style","type":"property","url":"#propdef-row-rule-style"},
 "#propdef-row-rule-visibility-items": {"displayText":"row-rule-visibility-items","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"row-rule-visibility-items","type":"property","url":"#propdef-row-rule-visibility-items"},
 "#propdef-row-rule-width": {"displayText":"row-rule-width","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"row-rule-width","type":"property","url":"#propdef-row-rule-width"},
 "#propdef-rule": {"displayText":"rule","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"rule","type":"property","url":"#propdef-rule"},
-"#propdef-rule-break": {"displayText":"rule-break","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"rule-break","type":"property","url":"#propdef-rule-break"},
 "#propdef-rule-color": {"displayText":"rule-color","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"rule-color","type":"property","url":"#propdef-rule-color"},
 "#propdef-rule-edge-inset": {"displayText":"rule-edge-inset","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"rule-edge-inset","type":"property","url":"#propdef-rule-edge-inset"},
 "#propdef-rule-inset": {"displayText":"rule-inset","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"rule-inset","type":"property","url":"#propdef-rule-inset"},
 "#propdef-rule-inset-end": {"displayText":"rule-inset-end","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"rule-inset-end","type":"property","url":"#propdef-rule-inset-end"},
 "#propdef-rule-inset-start": {"displayText":"rule-inset-start","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"rule-inset-start","type":"property","url":"#propdef-rule-inset-start"},
 "#propdef-rule-interior-inset": {"displayText":"rule-interior-inset","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"rule-interior-inset","type":"property","url":"#propdef-rule-interior-inset"},
+"#propdef-rule-join": {"displayText":"rule-join","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"rule-join","type":"property","url":"#propdef-rule-join"},
 "#propdef-rule-overlap": {"displayText":"rule-overlap","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"rule-overlap","type":"property","url":"#propdef-rule-overlap"},
 "#propdef-rule-style": {"displayText":"rule-style","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"rule-style","type":"property","url":"#propdef-rule-style"},
 "#propdef-rule-visibility-items": {"displayText":"rule-visibility-items","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"rule-visibility-items","type":"property","url":"#propdef-rule-visibility-items"},
@@ -5055,9 +5062,9 @@ let refsData = {
 "#typedef-repeat-line-style": {"displayText":"<repeat-line-style>","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"<repeat-line-style>","type":"type","url":"#typedef-repeat-line-style"},
 "#typedef-repeat-line-width": {"displayText":"<repeat-line-width>","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"<repeat-line-width>","type":"type","url":"#typedef-repeat-line-width"},
 "#union": {"displayText":"union","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"union","type":"dfn","url":"#union"},
-"#valdef-column-rule-break-intersection": {"displayText":"intersection","export":true,"for_":["column-rule-break","row-rule-break"],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"intersection","type":"value","url":"#valdef-column-rule-break-intersection"},
-"#valdef-column-rule-break-none": {"displayText":"none","export":true,"for_":["column-rule-break","row-rule-break"],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"none","type":"value","url":"#valdef-column-rule-break-none"},
-"#valdef-column-rule-break-spanning-item": {"displayText":"spanning-item","export":true,"for_":["column-rule-break","row-rule-break"],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"spanning-item","type":"value","url":"#valdef-column-rule-break-spanning-item"},
+"#valdef-column-rule-join-all": {"displayText":"all","export":true,"for_":["column-rule-join","row-rule-join"],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"all","type":"value","url":"#valdef-column-rule-join-all"},
+"#valdef-column-rule-join-none": {"displayText":"none","export":true,"for_":["column-rule-join","row-rule-join"],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"none","type":"value","url":"#valdef-column-rule-join-none"},
+"#valdef-column-rule-join-spanning-item": {"displayText":"spanning-item","export":true,"for_":["column-rule-join","row-rule-join"],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"spanning-item","type":"value","url":"#valdef-column-rule-join-spanning-item"},
 "#valdef-column-rule-visibility-items-all": {"displayText":"all","export":true,"for_":["column-rule-visibility-items","row-rule-visibility-items"],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"all","type":"value","url":"#valdef-column-rule-visibility-items-all"},
 "#valdef-column-rule-visibility-items-around": {"displayText":"around","export":true,"for_":["column-rule-visibility-items","row-rule-visibility-items"],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"around","type":"value","url":"#valdef-column-rule-visibility-items-around"},
 "#valdef-column-rule-visibility-items-between": {"displayText":"between","export":true,"for_":["column-rule-visibility-items","row-rule-visibility-items"],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"local","text":"between","type":"value","url":"#valdef-column-rule-visibility-items-between"},
@@ -5074,6 +5081,11 @@ let refsData = {
 "https://drafts.csswg.org/css-flexbox-1/#flex-container": {"displayText":"flex container","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-flexbox","spec":"css-flexbox-1","status":"current","text":"flex container","type":"dfn","url":"https://drafts.csswg.org/css-flexbox-1/#flex-container"},
 "https://drafts.csswg.org/css-flexbox-1/#flex-line": {"displayText":"flex line","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-flexbox","spec":"css-flexbox-1","status":"current","text":"flex line","type":"dfn","url":"https://drafts.csswg.org/css-flexbox-1/#flex-line"},
 "https://drafts.csswg.org/css-flexbox-1/#main-axis": {"displayText":"main axis","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-flexbox","spec":"css-flexbox-1","status":"current","text":"main axis","type":"dfn","url":"https://drafts.csswg.org/css-flexbox-1/#main-axis"},
+"https://drafts.csswg.org/css-gaps-1/#propdef-column-rule-break": {"displayText":"column-rule-break","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"current","text":"column-rule-break","type":"property","url":"https://drafts.csswg.org/css-gaps-1/#propdef-column-rule-break"},
+"https://drafts.csswg.org/css-gaps-1/#propdef-row-rule-break": {"displayText":"row-rule-break","export":true,"for_":[],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"current","text":"row-rule-break","type":"property","url":"https://drafts.csswg.org/css-gaps-1/#propdef-row-rule-break"},
+"https://drafts.csswg.org/css-gaps-1/#valdef-column-rule-break-intersection": {"displayText":"intersection","export":true,"for_":["column-rule-break","row-rule-break"],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"current","text":"intersection","type":"value","url":"https://drafts.csswg.org/css-gaps-1/#valdef-column-rule-break-intersection"},
+"https://drafts.csswg.org/css-gaps-1/#valdef-column-rule-break-none": {"displayText":"none","export":true,"for_":["column-rule-break","row-rule-break"],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"current","text":"none","type":"value","url":"https://drafts.csswg.org/css-gaps-1/#valdef-column-rule-break-none"},
+"https://drafts.csswg.org/css-gaps-1/#valdef-column-rule-break-spanning-item": {"displayText":"spanning-item","export":true,"for_":["column-rule-break","row-rule-break"],"level":"1","normative":true,"shortname":"css-gaps","spec":"css-gaps-1","status":"current","text":"spanning-item","type":"value","url":"https://drafts.csswg.org/css-gaps-1/#valdef-column-rule-break-spanning-item"},
 "https://drafts.csswg.org/css-grid-2/#grid-column": {"displayText":"grid column","export":true,"for_":[],"level":"2","normative":true,"shortname":"css-grid","spec":"css-grid-2","status":"current","text":"grid column","type":"dfn","url":"https://drafts.csswg.org/css-grid-2/#grid-column"},
 "https://drafts.csswg.org/css-grid-2/#grid-container": {"displayText":"grid container","export":true,"for_":[],"level":"2","normative":true,"shortname":"css-grid","spec":"css-grid-2","status":"current","text":"grid container","type":"dfn","url":"https://drafts.csswg.org/css-grid-2/#grid-container"},
 "https://drafts.csswg.org/css-grid-2/#grid-row": {"displayText":"grid row","export":true,"for_":[],"level":"2","normative":true,"shortname":"css-grid","spec":"css-grid-2","status":"current","text":"grid row","type":"dfn","url":"https://drafts.csswg.org/css-grid-2/#grid-row"},
